@@ -68,11 +68,13 @@ a.profile-link {
   border-top-width: thin;
   box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 40%;
+  width: 80%;
 }
 
 .container {
   padding: 2px 16px;
+  width: 100%;
+  margin-left: inherit;
 }
 
 .dropbtn {
@@ -151,8 +153,30 @@ input[type=submit]:hover {
 
 .your-blogs {
   display: -webkit-box;
+  width: 50%;
+  margin-left: 350px;
 }
 
 .home-page {
   margin-left: 50px;
+}
+
+.blog-button-left {
+  height: 40px;
+  width: 80px;
+}
+
+.blog-button-right {
+  height: 40px;
+  width: 150px;
+  background-color: black;
+  color: white;
+}
+
+.blog-group-btn {
+  display: -webkit-box;
+}
+
+.blog-right {
+  margin-left: 230px;
 }
