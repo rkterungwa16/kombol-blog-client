@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { UserDashboardRouterModule } from './user-dashboard-router.module';
 import { UserDashboardComponent } from './user-dashboard.component';
 import { LikeBlogPostComponent } from './like-blog-post/like-blog-post.component';
+import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { LikeBlogPostComponent } from './like-blog-post/like-blog-post.component
   ],
   declarations: [
     UserDashboardComponent,
-    LikeBlogPostComponent
+    LikeBlogPostComponent,
+    DropdownListComponent
   ]
 })
 export class UserDashboardModule { }

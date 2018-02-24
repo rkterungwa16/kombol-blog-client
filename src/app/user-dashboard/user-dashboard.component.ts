@@ -23,4 +23,8 @@ export class UserDashboardComponent {
       this.blogPosts = response;
     });
   }
+
+  renderUpdatedPosts(event) {
+    console.log('THIS IS THE UPDATED OUTPUT FROM CHILD', event);
+  }
 }

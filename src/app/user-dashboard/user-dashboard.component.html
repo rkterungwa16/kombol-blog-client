@@ -23,15 +23,17 @@
     <hr>
     <div *ngIf="blogPosts.length===0">You do not have any blog posts</div>
     <div *ngIf="blogPosts" >
-        <div *ngFor="let post of blogPosts"  class="your-blogs">
+        <div *ngFor="let post of blogPosts let i=index"  class="your-blogs">
             <div class="card">
-              <div class="dropdown">
-                <a class="dropbtn"><i class="fa fa-list"></i></a>
-                  <div id="myDropdown" class="dropdown-content">
-                    <a href="#home">Delete Post</a>
-                    <a href="#about">Edit Post</a>
-                  </div>
-              </div>
+              <app-dropdown-list
+                [postIndex] = "i"
+                [postId] = "post.id"
+                [authorId] = "post.user_id"
+                [blogPosts] = "blogPosts"
+                (updatedPosts) = "renderUpdatedPosts($event)"
+              >
+
+              </app-dropdown-list>
               <p class="quote">{{post.title}}</p>
               <hr>
               <div class="container">

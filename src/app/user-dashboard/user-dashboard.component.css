@@ -80,8 +80,6 @@ a.profile-link {
 .dropbtn {
   border: none;
   cursor: pointer;
-  font-size: 25px;
-  color: #858A7A;
 }
 
 .dropdown {
@@ -92,7 +90,7 @@ a.profile-link {
 
 .dropdown-content {
   display: none;
-  margin-top: 1px;
+  margin-top: 57px;
   border: solid 1px #eee;
   position: fixed;
   background-color: #f9f9f9;
