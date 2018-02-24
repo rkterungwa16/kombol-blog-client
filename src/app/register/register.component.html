@@ -1,53 +1,111 @@
 
-  <form class="modal-content"  (ngSubmit)="register()">
-    <div class="container">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      <label for="email"><b>Email</b></label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          [(ngModel)]="model.email"
-        >
-      <div class='form-group'>
-        <label for="name"><b>Username</b></label>
-         <input
-          type="text"
-          placeholder="Enter Username"
-          name="name"
-          [(ngModel)]="model.username"
-        >
+  <form
+    class="modal-content"
+    [formGroup] = 'registrationForm'
+    (ngSubmit)="register()"
+    #regForm="ngForm"
+  >
+
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <div class="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+
+    <label for="email"><b>Email</b></label>
+      <input
+        type="text"
+        id="email"
+        placeholder="Enter Email"
+        name="email"
+        formControlName="email" required
+      >
+
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="alert">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="email.errors.email">
+          Input must be an email.
+        </div>
       </div>
 
-      <div class='form-group'>
-        <label for="psw"><b>Password</b></label>
+    <div class='form-group'>
+      <label for="name"><b>Username</b></label>
+        <input
+        type="text"
+        placeholder="Enter Username"
+        name="username"
+        id="username"
+        formControlName="username" required
+      >
+
+      <div *ngIf="username.invalid && (username.dirty || username.touched)"
+            class="alert">
+
+        <div *ngIf="username.errors.required">
+          Username is required.
+        </div>
+        <div *ngIf="username.errors.minlength">
+          Username must be more the 6 characters
+        </div>
+      </div>
+    </div>
+
+    <div class='form-group'>
+        <label for="password"><b>Password</b></label>
         <input
           type="password"
           placeholder="Password"
-          name="psw"
-          [(ngModel)]="model.password"
+          name="password"
+          id="password"
+          formControlName="password"
         >
-      </div>
 
-      <div class='form-group'>
-        <label for="confirm-psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          name="confirm-psw"
-          [(ngModel)]="model.password_confirmation"
-        >
-      </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="alert">
 
-      <p>Already registered?
-        <a [routerLink]="['/login']"style="color:dodgerblue">Login</a>.
-      </p>
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="password.errors.minlength">
+            Password must be more the 6 characters
+          </div>
+        </div>
+    </div>
 
-      <div class="clearfix">
-        <button type="submit" (click)="register()" class="signupbtn">Sign Up</button>
+    <div class='form-group'>
+      <label for="password_confirmation"><b>Confirm Password</b></label>
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        name="confirm-password"
+        id="password_confirmation"
+        formControlName="password_confirmation"
+      >
+
+      <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)"
+            class="alert">
+
+        <div *ngIf="password_confirmation.errors.required">
+          Password is required to be confirmed.
+        </div>
+        <div *ngIf="password_confirmation.errors.minlength">
+          Password must be more the 6 characters
+        </div>
       </div>
     </div>
+
+    <p>Already registered?
+      <a [routerLink]="['/login']"style="color:dodgerblue">Login</a>.
+    </p>
+
+    <div class="clearfix">
+      <button type="submit" (click)="register()" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
   </form>
 

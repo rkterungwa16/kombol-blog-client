@@ -46,6 +46,7 @@ button:hover {
 .container {
   padding: 16px;
   margin-left: 40px;
+  width: 430px;
 }
 
 /* The Modal (background) */
@@ -83,4 +84,12 @@ hr {
 
 .form-group {
   margin-bottom: 10px;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #F1A1AE;
+  opacity: .4;
+  border: solid 1px red;
+  color: white;
 }

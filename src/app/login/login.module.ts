@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginRoutesModule } from './login-router.module'
 import { LoginComponent } from './login.component'
 
@@ -10,6 +10,7 @@ import { LoginComponent } from './login.component'
     CommonModule,
     LoginRoutesModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   declarations: [
