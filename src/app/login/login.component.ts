@@ -25,25 +25,25 @@ export class LoginComponent implements OnInit {
       private router: Router,
       private authService: AuthService) { }
 
-      ngOnInit(): void {
-        this.loginForm = new FormGroup({
-          'email': new FormControl(
-            this.model.email, [
-              Validators.required,
-              Validators.email
-            ]
-          ),
-          'password': new FormControl(
-            this.model.password, [
-              Validators.required,
-              Validators.minLength(6)
-            ]
-          )
-        })
-      }
-      get email() { return this.loginForm.get('email'); }
+    ngOnInit(): void {
+      this.loginForm = new FormGroup({
+        'email': new FormControl(
+          this.model.email, [
+            Validators.required,
+            Validators.email
+          ]
+        ),
+        'password': new FormControl(
+          this.model.password, [
+            Validators.required,
+            Validators.minLength(6)
+          ]
+        )
+      })
+    }
+    get email() { return this.loginForm.get('email'); }
 
-      get password() { return this.loginForm.get('password'); }
+    get password() { return this.loginForm.get('password'); }
 
     login () {
       this.loading = true;

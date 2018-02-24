@@ -25,6 +25,13 @@
     <div *ngIf="blogPosts" >
         <div *ngFor="let post of blogPosts"  class="your-blogs">
             <div class="card">
+              <div class="dropdown">
+                <a class="dropbtn"><i class="fa fa-list"></i></a>
+                  <div id="myDropdown" class="dropdown-content">
+                    <a href="#home">Delete Post</a>
+                    <a href="#about">Edit Post</a>
+                  </div>
+              </div>
               <p class="quote">{{post.title}}</p>
               <hr>
               <div class="container">
