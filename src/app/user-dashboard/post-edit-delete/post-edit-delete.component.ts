@@ -33,6 +33,11 @@ export class PostEditDeleteComponent implements OnInit {
     this.updatedPosts.emit(postsAfterDelete);
   }
 
+  editPost() {
+    let postsAfterEdit = this.editCurrentPost(this.blogPosts);
+    this.updatedPosts.emit(postsAfterEdit);
+  }
+
   deleteCurrentPost(posts: any[]) {
     let postExists;
     let currentPost;
@@ -45,6 +50,16 @@ export class PostEditDeleteComponent implements OnInit {
     if (postExists === true) {
       posts.splice(currentPost, 1);
     }
+    return posts;
+  }
+
+  editCurrentPost(posts: any[]) {
+    posts.forEach((member) => {
+      if (member.id === this.postId && member.user_id === this.authorId) {
+        member.title = this.model.title;
+        member.content = this.model.content;
+      }
+    });
     return posts;
   }
 

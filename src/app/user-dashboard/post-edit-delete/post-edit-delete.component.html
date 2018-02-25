@@ -6,7 +6,7 @@
 </div>
 
 <div [style.display]="modalDisplay" class="modal">
-    <form class="modal-content animate">
+    <form class="modal-content animate" (ngSubmit)="editPost()">
       <div class="imgcontainer">
         <span (click)="openModal()" class="close" title="Close Modal">&times;</span>
       </div>
