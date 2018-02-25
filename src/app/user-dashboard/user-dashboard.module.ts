@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { UserDashboardRouterModule } from './user-dashboard-router.module';
 import { UserDashboardComponent } from './user-dashboard.component';
 import { LikeBlogPostComponent } from './like-blog-post/like-blog-post.component';
-import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
+import { PostEditDeleteComponent } from './post-edit-delete/post-edit-delete.component'
 
 @NgModule({
   imports: [
     CommonModule,
     UserDashboardRouterModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   declarations: [
     UserDashboardComponent,
     LikeBlogPostComponent,
-    DropdownListComponent
+    PostEditDeleteComponent
   ]
 })
 export class UserDashboardModule { }

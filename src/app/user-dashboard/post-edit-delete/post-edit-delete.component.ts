@@ -7,17 +7,20 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-dropdown-list',
-  templateUrl: './dropdown-list.component.html',
-  styleUrls: ['./dropdown-list.component.css']
+  selector: 'app-post-edit-delete',
+  templateUrl: './post-edit-delete.component.html',
+  styleUrls: ['./post-edit-delete.component.css']
 })
+export class PostEditDeleteComponent implements OnInit {
 
-export class DropdownListComponent implements OnInit {
   @Input() postIndex;
   @Input() postId;
   @Input() authorId;
   @Input() blogPosts;
   @Output() updatedPosts = new EventEmitter<any[]>();
+  modalOpen: boolean = false;
+  modalDisplay: string;
+  model: any = {};
 
   display: string;
   constructor() { }
@@ -43,5 +46,15 @@ export class DropdownListComponent implements OnInit {
       posts.splice(currentPost, 1);
     }
     return posts;
+  }
+
+  openModal() {
+    if (this.modalOpen === false) {
+      this.modalDisplay = 'block'
+      this.modalOpen = true;
+    } else if (this.modalOpen === true) {
+      this.modalDisplay = 'none';
+      this.modalOpen = false;
+    }
   }
 }

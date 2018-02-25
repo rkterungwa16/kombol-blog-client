@@ -25,7 +25,7 @@
     <div *ngIf="blogPosts" >
         <div *ngFor="let post of blogPosts let i=index"  class="your-blogs">
             <div class="card">
-              <app-dropdown-list
+              <app-post-edit-delete
                 [postIndex] = "i"
                 [postId] = "post.id"
                 [authorId] = "post.user_id"
@@ -33,15 +33,13 @@
                 (updatedPosts) = "renderUpdatedPosts($event)"
               >
 
-              </app-dropdown-list>
+              </app-post-edit-delete>
               <p class="quote">{{post.title}}</p>
               <hr>
               <div class="container">
                 <h1 class="post-info">{{post.content}}</h1>
-                <p class="post-info">Ok now what</p>
-                <p class="post-info"><a href="#">Read more...</a></p>
+                <hr>
                 <div class="blog-group-btn">
-
                     <app-like-blog-post
                       [postId]="post.id"
                       [authorId]="post.user_id"
