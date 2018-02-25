@@ -29,7 +29,7 @@ export class BlogPostService {
   }
 
   likePost(postId): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/v1/post/like/${postId}/`, {postId}, { headers: this.headers })
+    return this.http.post(`${this.apiBaseUrl}/v1/post/like/${postId}/`, {}, { headers: this.headers })
     .map((response: Response) => response)
   }
 
@@ -37,5 +37,16 @@ export class BlogPostService {
     return this.http
     .get(`${this.apiBaseUrl}/v1/post/likes/${postId}`, { headers: this.headers })
     .map((response: Response) => response)
+  }
+
+  editPost(postId, editedPost): Observable<any> {
+    return this.http
+    .patch(`${this.apiBaseUrl}/v1/blog/post/${postId}`, editedPost, { headers: this.headers })
+    .map((response: Response) => response)
+  }
+
+  deletePost(postId): Observable<any> {
+    return this.http
+    .delete(`${this.apiBaseUrl}/v1/blog/post/${postId}`, { headers: this.headers })
   }
 }

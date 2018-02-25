@@ -6,6 +6,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 
+import { BlogPostService } from '../../services/blog-post.service'
+
 @Component({
   selector: 'app-post-edit-delete',
   templateUrl: './post-edit-delete.component.html',
@@ -23,7 +25,9 @@ export class PostEditDeleteComponent implements OnInit {
   model: any = {};
 
   display: string;
-  constructor() { }
+  constructor(
+    private blogPostService: BlogPostService
+  ) { }
 
   ngOnInit() {
   }
@@ -31,11 +35,20 @@ export class PostEditDeleteComponent implements OnInit {
   deletePost() {
     let postsAfterDelete = this.deleteCurrentPost(this.blogPosts)
     this.updatedPosts.emit(postsAfterDelete);
+    this.blogPostService.deletePost(this.postId)
+    .subscribe((response) => {
+      console.log(response);
+    })
   }
 
   editPost() {
     let postsAfterEdit = this.editCurrentPost(this.blogPosts);
     this.updatedPosts.emit(postsAfterEdit);
+    this.openModal();
+    this.blogPostService.editPost(this.postId, this.model)
+    .subscribe((response) => {
+      console.log(response);
+    })
   }
 
   deleteCurrentPost(posts: any[]) {
@@ -56,8 +69,14 @@ export class PostEditDeleteComponent implements OnInit {
   editCurrentPost(posts: any[]) {
     posts.forEach((member) => {
       if (member.id === this.postId && member.user_id === this.authorId) {
-        member.title = this.model.title;
-        member.content = this.model.content;
+        if (this.model.title === '') {
+          member.title = member.title;
+        } else if (this.model.content === '') {
+          member.content = member.content;
+        } else {
+          member.title = this.model.title;
+          member.content = this.model.content;
+        }
       }
     });
     return posts;
