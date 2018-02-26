@@ -45,6 +45,12 @@ export class LoginComponent implements OnInit {
 
     get password() { return this.loginForm.get('password'); }
 
+    /**
+     * login a user
+     * Navigate to user dashboard page on successful login
+     *
+     * @return {void}
+     */
     login () {
       this.loading = true;
       this.authService.login(this.loginForm.value)

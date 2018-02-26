@@ -12,24 +12,11 @@ export class UserService {
   }
 
   /**
-   * Returns the logged in user's information
+   * Registers a new user
    *
-   * @param String id number of the logged in user
+   * @param {object} userInfo contains all the users information
    *
-   * @return Observable containing the user's info
-   */
-  getBlogs(): Observable<any> {
-    return this.http
-      .get(`${this.apiBaseUrl}/v1/user/1/posts`)
-      .map((response: Response) => response)
-  }
-
-  /**
-   * Returns the logged in user's information
-   *
-   * @param String id number of the logged in user
-   *
-   * @return Observable containing the user's info
+   * @return {observable} Observable containing the user's info
    */
   registerUser(userInfo): Observable<any> {
     return this.http.post(`${this.apiBaseUrl}/v1/register`, userInfo)

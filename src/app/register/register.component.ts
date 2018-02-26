@@ -62,11 +62,15 @@ export class RegisterComponent implements OnInit {
 
     get password_confirmation() { return this.registrationForm.get('password_confirmation'); }
 
+    /**
+     * Register a user
+     * Navigate to login page on successful registration
+     *
+     * @return {void}
+     */
     register() {
-      console.log('this is the model', this.registrationForm.value);
       this.userService.registerUser(this.registrationForm.value)
         .subscribe((response) => {
-          console.log('THIS IS THE RESPONSE', response.success);
           if (response.success === false) {
             this.errorMessage = 'Oops something went wrong';
           } else {

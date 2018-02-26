@@ -32,6 +32,11 @@ export class PostEditDeleteComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Delete a post created by current user
+   *
+   * @return {void}
+   */
   deletePost() {
     let postsAfterDelete = this.deleteCurrentPost(this.blogPosts)
     this.updatedPosts.emit(postsAfterDelete);
@@ -41,6 +46,11 @@ export class PostEditDeleteComponent implements OnInit {
     })
   }
 
+  /**
+   * Edit a post created by current user
+   *
+   * @return {void}
+   */
   editPost() {
     let postsAfterEdit = this.editCurrentPost(this.blogPosts);
     this.updatedPosts.emit(postsAfterEdit);
@@ -51,14 +61,21 @@ export class PostEditDeleteComponent implements OnInit {
     })
   }
 
+  /**
+   * Delete selected post created by current user
+   *
+   * @param {array} posts all posts created by current user
+   *
+   * @return {array} updated posts containing
+   */
   deleteCurrentPost(posts: any[]) {
     let postExists;
     let currentPost;
     posts.forEach((member, index) => {
-        if (member.id === this.postId && member.user_id === this.authorId) {
-            postExists = true
-            currentPost = index
-        }
+      if (member.id === this.postId && member.user_id === this.authorId) {
+          postExists = true
+          currentPost = index
+      }
     });
     if (postExists === true) {
       posts.splice(currentPost, 1);
@@ -66,6 +83,14 @@ export class PostEditDeleteComponent implements OnInit {
     return posts;
   }
 
+
+  /**
+   * Edit selected post created by current user
+   *
+   * @param {array} posts all posts created by current user
+   *
+   * @return {array} posts containing updated post
+   */
   editCurrentPost(posts: any[]) {
     posts.forEach((member) => {
       if (member.id === this.postId && member.user_id === this.authorId) {
@@ -82,6 +107,11 @@ export class PostEditDeleteComponent implements OnInit {
     return posts;
   }
 
+  /**
+   * Open or close a modal to edit a post
+   *
+   * @return {void}
+   */
   openModal() {
     if (this.modalOpen === false) {
       this.modalDisplay = 'block'

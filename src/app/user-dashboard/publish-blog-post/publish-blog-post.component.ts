@@ -16,6 +16,9 @@ export class PublishBlogPostComponent {
     private blogPostService: BlogPostService
   ) {}
 
+  /**
+   * Create a new blog post by current user
+   */
   publish() {
     this.blogPostService.publishBlogPost(this.model)
     .subscribe((response) => {
@@ -23,5 +26,4 @@ export class PublishBlogPostComponent {
       console.log(response);
     })
   }
-
 }

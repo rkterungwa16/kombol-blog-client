@@ -10,13 +10,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Logs in a registered user
+   *
+   * @param {object} userInfo contains all the users information
+   *
+   * @return {observable} Observable containing the user's info
+   */
   login(userInfo) {
       return this.http.post(`${this.apiBaseUrl}/v1/login`, userInfo)
       .map((response: {data}) => response)
   }
-
-  // logout() {
-  //     // remove user from local storage to log user out
-  //     localStorage.removeItem('currentUser');
-  // }
 }

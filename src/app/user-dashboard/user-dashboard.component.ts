@@ -16,15 +16,14 @@ export class UserDashboardComponent {
     this.getBlogPosts();
   }
 
+  /**
+   * Get all blog posts by a current user
+   */
   getBlogPosts() {
     this.blogService.getBlogPost()
     .subscribe((response) => {
       console.log(response);
       this.blogPosts = response;
     });
-  }
-
-  renderUpdatedPosts(event) {
-    console.log('THIS IS THE UPDATED OUTPUT FROM CHILD', event);
   }
 }

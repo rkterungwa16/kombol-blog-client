@@ -29,6 +29,11 @@ export class LikeBlogPostComponent implements OnInit {
     this.getPostLikes(this.postId);
   }
 
+  /**
+   * Current user likes a post
+   *
+   * @return {void}
+   */
   likePost() {
     this.currentUserLikedPost(this.postLikes);
     this.blogPostService.likePost(this.postId)
@@ -37,6 +42,11 @@ export class LikeBlogPostComponent implements OnInit {
     })
   }
 
+  /**
+   * Get all likes for a blog post
+   *
+   * @return {void}
+   */
   getPostLikes(postId) {
     this.blogPostService.getPostLikes(this.postId)
     .subscribe((response) => {
@@ -44,6 +54,14 @@ export class LikeBlogPostComponent implements OnInit {
     })
   }
 
+  /**
+   * Enables current user to like and unlike a post
+   *
+   * @param {array} postLkes array of all likes in a post
+   *
+   * @return {array} an updated array indicating if current user
+   * liked or unliked a post
+   */
   currentUserLikedPost(postLikes: any[]) {
     let likedPost;
     let currentUser;
