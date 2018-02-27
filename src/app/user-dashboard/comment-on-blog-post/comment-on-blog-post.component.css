@@ -1,0 +1,30 @@
+.comment-input {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.comment-btn {
+  margin-top: 20px;
+  height: 40px;
+  width: 80px;
+}
+
+.post-comments {
+  border: solid 1px #948383;
+  padding: 10px;
+}
+
+.blog-button-right {
+  height: 40px;
+  width: 200px;
+  background-color: black;
+  color: white;
+}
+
+.blog-right {
+  float: right;
+}

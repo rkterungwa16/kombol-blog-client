@@ -1,0 +1,24 @@
+<form class="post-comment" (ngSubmit)="commentOnPost()">
+    <div class="container">
+      <input
+        class='comment-input'
+        type="text"
+        placeholder="Post a comment..."
+        name="comment"
+        [(ngModel)]="model.comment"
+      >
+      <button class="comment-btn" type="submit">Post</button>
+    </div>
+</form>
+<p class="blog-right">
+    <button class="blog-button-right" (click)="showOrHideComments()">
+        <b>{{commentMessage}} <span class="tag-white">{{postComments.length}}</span></b>
+    </button>
+  </p>
+<div [style.display]="commentDisplay">
+    <div class="post-comments" *ngFor="let comments of postComments let i=index">
+        <h4>{{comments.username}}</h4>
+        <p>{{comments.comment}}</p>
+    </div>
+</div>
+

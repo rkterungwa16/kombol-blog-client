@@ -90,4 +90,31 @@ export class BlogPostService {
     return this.http
     .delete(`${this.apiBaseUrl}/v1/blog/post/${postId}`, { headers: this.headers })
   }
+
+  /**
+   * Comment on a post by current user
+   *
+   * @param {number} postId the number representing the post to be commented on
+   * @param {object} postComment an object representing comment
+   *
+   * @return {observable} Observable indicating comment is successful
+   */
+  commentOnPost(postId, postComment): Observable<any> {
+    return this.http
+    .post(`${this.apiBaseUrl}/v1/post/comment/${postId}`, postComment, { headers: this.headers })
+    .map((response: Response) => response)
+  }
+
+  /**
+   * Get all comments on a post
+   *
+   * @param {number} postId the number representing the post to get values from
+   *
+   * @return {observable} Observable get all comments on a post
+   */
+  getAllPostComments(postId): Observable<any> {
+    return this.http
+    .get(`${this.apiBaseUrl}/v1/post/comments/${postId}`, { headers: this.headers })
+    .map((response: Response) => response)
+  }
 }

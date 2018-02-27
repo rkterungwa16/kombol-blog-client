@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Response, Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
+import { localStorage } from '../global';
 
 @Injectable()
 export class UserService {
   private apiBaseUrl: string = environment.apiBaseUrl;
-  constructor(private http: HttpClient) {
+  private headers: HttpHeaders;
+  private token: string;
 
+  constructor(private http: HttpClient) {
+    this.token = localStorage.getItem('kombol-blog-token');
+    this.headers = new HttpHeaders()
+    .set("Authorization", `Bearer ${this.token}`);
   }
 
   /**
@@ -21,5 +27,16 @@ export class UserService {
   registerUser(userInfo): Observable<any> {
     return this.http.post(`${this.apiBaseUrl}/v1/register`, userInfo)
       .map((response: Response) => response)
+  }
+
+  /**
+   * Get current user details
+   *
+   * @return {observable} Observable containing current user's info
+  */
+  getUser(): Observable<any> {
+    return this.http
+    .get(`${this.apiBaseUrl}/v1/user`, {headers: this.headers})
+    .map((response: Response) => response)
   }
 }
