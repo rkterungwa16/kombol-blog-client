@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogPostService } from '../services/blog-post.service'
+import { UserService } from '../services/user.service'
+import { localStorage } from '../global';
 
 @Component({
   templateUrl: './user-dashboard.component.html',
@@ -7,13 +9,16 @@ import { BlogPostService } from '../services/blog-post.service'
 })
 export class UserDashboardComponent {
   blogPosts = [];
+  currentUser: any = {};
 
   constructor (
-    private blogService: BlogPostService
+    private blogService: BlogPostService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
     this.getBlogPosts();
+    this.getCurrentUser();
   }
 
   /**
@@ -25,5 +30,16 @@ export class UserDashboardComponent {
       console.log(response);
       this.blogPosts = response;
     });
+  }
+
+  /**
+   * Get current user
+   *
+   */
+  getCurrentUser() {
+    this.userService.getUser()
+    .subscribe((response) => {
+      this.currentUser = response.user;
+    })
   }
 }

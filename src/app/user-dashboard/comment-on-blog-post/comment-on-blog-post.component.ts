@@ -5,8 +5,6 @@ import {
   Output
 } from '@angular/core';
 import { BlogPostService } from '../../services/blog-post.service'
-import { UserService } from '../../services/user.service'
-import { localStorage } from '../../global';
 
 @Component({
   selector: 'app-comment-on-blog-post',
@@ -17,9 +15,9 @@ export class CommentOnBlogPostComponent implements OnInit {
 
   @Input() postId;
   @Input() postIndex;
+  @Input() currentUser;
   model: any = {};
   postComments: any[];
-  currentUser: any = {};
   commentOpen: boolean = false;
   commentDisplay: string;
   commentMessage: string;
@@ -27,11 +25,9 @@ export class CommentOnBlogPostComponent implements OnInit {
   borderColor = 'red';
   constructor(
     private blogService: BlogPostService,
-    private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.getCurrentUser();
     this.getCommentsOnPost();
     this.commentOpen = false;
     this.commentDisplay = 'none';
@@ -67,17 +63,6 @@ export class CommentOnBlogPostComponent implements OnInit {
     this.blogService.getAllPostComments(this.postId)
     .subscribe((response) => {
       this.postComments = response.post_comments;
-    })
-  }
-
-  /**
-   * Get current user
-   *
-   */
-  getCurrentUser() {
-    this.userService.getUser()
-    .subscribe((response) => {
-      this.currentUser = response.user;
     })
   }
 
