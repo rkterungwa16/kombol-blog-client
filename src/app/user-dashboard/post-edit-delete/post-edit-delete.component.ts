@@ -23,6 +23,8 @@ export class PostEditDeleteComponent implements OnInit {
   modalOpen: boolean = false;
   modalDisplay: string;
   model: any = {};
+  errorColor = 'red';
+  errorMessage: any = {};
 
   display: string;
   constructor(
@@ -52,13 +54,21 @@ export class PostEditDeleteComponent implements OnInit {
    * @return {void}
    */
   editPost() {
-    let postsAfterEdit = this.editCurrentPost(this.blogPosts);
-    this.updatedPosts.emit(postsAfterEdit);
-    this.openModal();
-    this.blogPostService.editPost(this.postId, this.model)
-    .subscribe((response) => {
-      console.log(response);
-    })
+
+    if (this.model.title === '') {
+      this.errorMessage.title = 'You need a title for post';
+    } else if (this.model.content === '') {
+      this.errorMessage.content = 'You need content for post'
+    } else {
+      let postsAfterEdit = this.editCurrentPost(this.blogPosts);
+      this.updatedPosts.emit(postsAfterEdit);
+      this.openModal();
+      this.blogPostService.editPost(this.postId, this.model)
+      .subscribe((response) => {
+        console.log(response);
+      })
+    }
+
   }
 
   /**
@@ -92,16 +102,10 @@ export class PostEditDeleteComponent implements OnInit {
    * @return {array} posts containing updated post
    */
   editCurrentPost(posts: any[]) {
-    posts.forEach((member) => {
+    posts.forEach((member, index) => {
       if (member.id === this.postId && member.user_id === this.authorId) {
-        if (this.model.title === '') {
-          member.title = member.title;
-        } else if (this.model.content === '') {
-          member.content = member.content;
-        } else {
-          member.title = this.model.title;
-          member.content = this.model.content;
-        }
+        member.title = this.model.title;
+        member.content = this.model.content;
       }
     });
     return posts;
@@ -113,6 +117,8 @@ export class PostEditDeleteComponent implements OnInit {
    * @return {void}
    */
   openModal() {
+    this.model.title = this.blogPosts[this.postIndex].title;
+    this.model.content = this.blogPosts[this.postIndex].content;
     if (this.modalOpen === false) {
       this.modalDisplay = 'block'
       this.modalOpen = true;

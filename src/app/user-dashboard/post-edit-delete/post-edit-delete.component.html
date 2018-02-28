@@ -13,6 +13,7 @@
 
       <div class="container">
         <label for="title"><b>Title</b></label>
+        <span *ngIf="errorMessage.title" [style.color]="errorColor">{{errorMessage.title}}</span>
         <input
           class='edit-input'
           type="text"
@@ -22,6 +23,7 @@
         >
 
         <label for="content"><b>Content</b></label>
+        <span *ngIf="errorMessage.content" [style.color]="errorColor">{{errorMessage.content}}</span>
         <textarea
           class="edit-input"
           name="content"

@@ -23,6 +23,8 @@ export class CommentOnBlogPostComponent implements OnInit {
   commentOpen: boolean = false;
   commentDisplay: string;
   commentMessage: string;
+  error: boolean;
+  borderColor = 'red';
   constructor(
     private blogService: BlogPostService,
     private userService: UserService
@@ -41,15 +43,20 @@ export class CommentOnBlogPostComponent implements OnInit {
    *
    */
   commentOnPost() {
-    this.postComments.push({
-      comment: this.model.comment,
-      username: this.currentUser.username
-    });
-    this.blogService.commentOnPost(this.postId, this.model )
-    .subscribe((response) => {
-      console.log(response)
-    })
-    this.model.comment = '';
+    if (this.model.comment === '') {
+      this.error = true;
+    } else {
+      this.postComments.push({
+        comment: this.model.comment,
+        username: this.currentUser.username
+      });
+      this.blogService.commentOnPost(this.postId, this.model )
+      .subscribe((response) => {
+        console.log(response)
+      })
+      this.model.comment = '';
+    }
+
   }
 
   /**

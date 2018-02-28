@@ -16,7 +16,10 @@
     </button>
   </p>
 <div [style.display]="commentDisplay">
-    <div class="post-comments" *ngFor="let comments of postComments let i=index">
+    <div
+      class="post-comments"
+      *ngFor="let comments of postComments let i=index"
+    >
         <h4>{{comments.username}}</h4>
         <p>{{comments.comment}}</p>
     </div>
