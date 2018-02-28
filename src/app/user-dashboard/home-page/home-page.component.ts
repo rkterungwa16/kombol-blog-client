@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogPostService } from '../services/blog-post.service'
-import { UserService } from '../services/user.service'
+import { BlogPostService } from '../../services/blog-post.service'
+import { UserService } from '../../services/user.service'
 
 @Component({
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.css']
 })
-export class UserDashboardComponent {
+export class HomePageComponent implements OnInit {
+
   blogPosts = [];
   currentUser: any = {};
 
@@ -16,18 +18,17 @@ export class UserDashboardComponent {
   ) {}
 
   ngOnInit() {
-    this.getBlogPosts();
-    this.getCurrentUser();
+    this.getAllBlogPosts();
   }
 
   /**
    * Get all blog posts by a current user
    */
-  getBlogPosts() {
-    this.blogService.getBlogPost()
+  getAllBlogPosts() {
+    this.blogService.getAllBlogPosts()
     .subscribe((response) => {
       console.log(response);
-      this.blogPosts = response;
+      this.blogPosts = response.all_posts;
     });
   }
 

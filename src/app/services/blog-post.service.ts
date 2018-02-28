@@ -29,6 +29,17 @@ export class BlogPostService {
   }
 
   /**
+   * Get all blog posts
+   *
+   * @return {observable} Observable containing all of the blog posts created
+   */
+  getAllBlogPosts(): Observable<any> {
+    return this.http
+    .get(`${this.apiBaseUrl}/v1/all-posts`, {headers: this.headers})
+    .map((response: Response) => response)
+  }
+
+  /**
    * Publish a post
    *
    * @param {object} blogPost object containing post to be created
