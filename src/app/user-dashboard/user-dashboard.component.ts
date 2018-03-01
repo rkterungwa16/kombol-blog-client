@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlogPostService } from '../services/blog-post.service'
 import { UserService } from '../services/user.service'
 
@@ -12,7 +13,8 @@ export class UserDashboardComponent {
 
   constructor (
     private blogService: BlogPostService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -40,5 +42,14 @@ export class UserDashboardComponent {
     .subscribe((response) => {
       this.currentUser = response.user;
     })
+  }
+
+  /**
+   * Logout
+   */
+  logOut() {
+    localStorage.removeItem('kombol-blog-token');
+    localStorage.removeItem('current-user-email');
+    this.router.navigate(['/register']);
   }
 }
