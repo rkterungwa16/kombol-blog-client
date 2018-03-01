@@ -40,6 +40,17 @@ export class BlogPostService {
   }
 
   /**
+   * Get one blog post
+   *
+   * @return {observable} Observable containing all of the blog posts created
+   */
+  getOnePost(postId): Observable<any> {
+    return this.http
+    .get(`${this.apiBaseUrl}/v1/post/${postId}`, {headers: this.headers})
+    .map((response: Response) => response)
+  }
+
+  /**
    * Publish a post
    *
    * @param {object} blogPost object containing post to be created

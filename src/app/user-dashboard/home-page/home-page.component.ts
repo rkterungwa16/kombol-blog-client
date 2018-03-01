@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BlogPostService } from '../../services/blog-post.service'
 import { UserService } from '../../services/user.service'
 
@@ -14,7 +15,8 @@ export class HomePageComponent implements OnInit {
 
   constructor (
     private blogService: BlogPostService,
-    private userService: UserService
+    private userService: UserService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {

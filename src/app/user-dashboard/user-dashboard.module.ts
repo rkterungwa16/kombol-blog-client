@@ -8,6 +8,7 @@ import { LikeBlogPostComponent } from './like-blog-post/like-blog-post.component
 import { PostEditDeleteComponent } from './post-edit-delete/post-edit-delete.component';
 import { CommentOnBlogPostComponent } from './comment-on-blog-post/comment-on-blog-post.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { BlogDetailsComponent } from './blog-details/blog-details.component'
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     LikeBlogPostComponent,
     PostEditDeleteComponent,
     CommentOnBlogPostComponent,
-    HomePageComponent
+    HomePageComponent,
+    BlogDetailsComponent
   ]
 })
 export class UserDashboardModule { }
