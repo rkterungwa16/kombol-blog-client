@@ -6,7 +6,8 @@
 
 .post-info {
   color: #858A7A;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Fjord One', serif;
+  font-size: 25px;
   width: 440px;
   margin-bottom: 50px;
 }
@@ -18,7 +19,7 @@
 .topnav {
   overflow: hidden;
   background-color: #BCADAD;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Fjord One', serif;
 }
 
 .topnav.below {
@@ -39,6 +40,7 @@
 a.profile-link {
   float: right !important;
   margin-right: 50px;
+  cursor: pointer;
 }
 
 .topnav a {

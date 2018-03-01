@@ -1,12 +1,13 @@
-.quote {
+.post-quote {
   font: 400 72px "Arizonia", Helvetica, sans-serif;
   color: #858A7A;
   text-align: center;
 }
 
-.post-info {
+.post-content {
   color: #858A7A;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Fjord One', serif;
+  font-size: 25px;
   width: 440px;
   margin-bottom: 50px;
 }
@@ -18,7 +19,7 @@
 .topnav {
   overflow: hidden;
   background-color: #BCADAD;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Fjord One', serif;
 }
 
 .topnav.below {
@@ -60,7 +61,7 @@ a.profile-link {
   color: white;
 }
 
-.card {
+.post-card {
   border-top-style: solid;
   border-top-color: #948383;
   box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
@@ -71,7 +72,7 @@ a.profile-link {
 
 }
 
-.container {
+.post-container {
   padding: 2px 16px;
   width: 100%;
   margin-left: inherit;
@@ -121,46 +122,22 @@ a.profile-link {
   margin-left: 50px;
 }
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #BCADAD;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #ECE1E1;
-}
-
 .post_container {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
 }
 
-.your-blogs {
+.post-header {
   display: -webkit-box;
   max-width: 150%;
 }
 
-.home-page {
+.post-page {
   display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-  width: 600px;
+  width: 1200px;
 }
 
 .blog-button-left {

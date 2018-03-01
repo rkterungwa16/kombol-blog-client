@@ -16,32 +16,14 @@
     </div>
   </div>
 
-  <div class='home-page'>
-      <div class="your-blog-heading">
-      <h1 class="post-info bold">This is the blog post</h1>
-      </div>
+  <div class='post-page'>
       <div>
-          <div class="your-blogs">
-              <div class="card">
-                <p class="quote">{{post.title}}</p>
+          <div class="post-header">
+              <div class="post-card">
+                <p class="post-quote">{{post.title}}</p>
                 <hr>
-                <div class="container">
-                  <h1 class="post-info">{{post.content}}</h1>
-                  <hr>
-                  <div class="blog-group-btn">
-                      <app-like-blog-post
-                        [postId]="post.id"
-                        [authorId]="post.user_id"
-                      ></app-like-blog-post>
-                  </div>
-                  <hr>
-                  <div class="post-comment">
-                      <app-comment-on-blog-post
-                        [postIndex] = "i"
-                        [postId] = "post.id"
-                        [currentUser] = "currentUser"
-                      ></app-comment-on-blog-post>
-                    </div>
+                <div class="post-container">
+                  <h1 class="post-content">{{post.content}}</h1>
                 </div>
               </div>
             </div>

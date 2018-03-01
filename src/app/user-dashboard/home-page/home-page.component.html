@@ -18,7 +18,7 @@
 
   <div class='home-page'>
       <div class="your-blog-heading">
-      <h1 class="post-info bold">Other blogs on the platform</h1>
+      <h1 class="post-info bold">Other blogs</h1>
       </div>
       <div *ngIf="blogPosts.length===0">You do not have any blog posts</div>
       <div *ngIf="blogPosts" >
@@ -29,8 +29,6 @@
                 </a>
                 <hr>
                 <div class="container">
-                  <h1 class="post-info">{{post.content}}</h1>
-                  <hr>
                   <div class="blog-group-btn">
                       <app-like-blog-post
                         [postId]="post.id"

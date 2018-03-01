@@ -7,6 +7,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
 import { PublishBlogPostComponent } from './user-dashboard/publish-blog-post/publish-blog-post.component';
 import { HomePageComponent } from './user-dashboard/home-page/home-page.component';
+import { BlogDetailsComponent } from './user-dashboard/blog-details/blog-details.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -15,8 +16,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'publish', component: PublishBlogPostComponent, canActivate: [AuthGuard]},
     { path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
-
-    // otherwise redirect to home
+    { path: 'post/:id', component: BlogDetailsComponent },
     { path: '**', redirectTo: 'register' }
 ];
 
