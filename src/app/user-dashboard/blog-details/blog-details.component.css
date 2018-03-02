@@ -8,7 +8,6 @@
   color: #858A7A;
   font-family: 'Fjord One', serif;
   font-size: 25px;
-  width: 440px;
   margin-bottom: 50px;
 }
 
@@ -156,4 +155,13 @@ a.profile-link {
 .post-comments {
   border: solid 1px #948383;
   padding: 10px;
+}
+
+.post-creator-details {
+  margin-left: 19px;
+  font-weight: bold;
+  border: solid 1px lightgray;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+  font-family: 'Fjord One', serif;
+  color: #858A7A;
 }

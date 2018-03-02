@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit {
   getAllBlogPosts() {
     this.blogService.getAllBlogPosts()
     .subscribe((response) => {
-      console.log(response);
+      console.log('this are posts', response);
       this.blogPosts = response.all_posts;
     });
   }

@@ -4,7 +4,6 @@ import {
   Input,
 } from '@angular/core';
 import { BlogPostService } from '../../services/blog-post.service'
-import { localStorage } from '../../global';
 
 @Component({
   selector: 'app-like-blog-post',

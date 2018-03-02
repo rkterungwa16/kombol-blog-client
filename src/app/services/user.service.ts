@@ -39,4 +39,24 @@ export class UserService {
     .get(`${this.apiBaseUrl}/v1/user`, {headers: this.headers})
     .map((response: Response) => response)
   }
+
+  /**
+   * Follow a user
+   *
+   * @return {observable} Observable containing current user's info
+  */
+  followAUser(userId): Observable<any> {
+    return this.http
+    .post(`${this.apiBaseUrl}/v1/user/follow/${userId}`, {}, { headers: this.headers })
+  }
+
+  /**
+   * Check if current user is following a user
+   *
+   * @return {observable} Observable containing current user's info
+  */
+  currentUserIsFollowing(userId): Observable<any> {
+    return this.http
+    .get(`${this.apiBaseUrl}/v1/user/is-following/${userId}`, { headers: this.headers })
+  }
 }

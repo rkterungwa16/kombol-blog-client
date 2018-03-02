@@ -24,9 +24,18 @@
       <div *ngIf="blogPosts" >
           <div *ngFor="let post of blogPosts let i=index"  class="your-blogs">
               <div class="card">
-                <a [routerLink]="['/post', post.id]">
+                <a class="post-title" [routerLink]="['/post', post.id]">
                   <p class="quote">{{post.title}}</p>
                 </a>
+                <div class="follow-wrapper">
+                    <span class="post-creator">Created By: {{post.author}}</span>
+                    <app-follow-user
+                      [userId] = "post.user_id"
+                      [postIndex] = "i"
+                    >
+                    </app-follow-user>
+                </div>
+
                 <hr>
                 <div class="container">
                   <div class="blog-group-btn">
