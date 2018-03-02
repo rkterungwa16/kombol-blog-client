@@ -14,6 +14,7 @@ export class FollowUserComponent implements OnInit {
   @Input() userId
   @Input() postIndex
   follow = 'following'
+  errorMessage: string
   currentUser: any = {};
   constructor(
     private userService: UserService
@@ -31,7 +32,7 @@ export class FollowUserComponent implements OnInit {
    */
   followUser() {
     if (this.currentUser.user.id === this.userId) {
-      console.log('You can not like your post');
+      this.errorMessage = 'You cannot follow your self';
     } else {
       this.userService.followAUser(this.userId)
       .subscribe((response) => {
@@ -40,7 +41,6 @@ export class FollowUserComponent implements OnInit {
         } else if (response.success === false) {
           this.follow = 'follow';
         }
-        console.log(response);
       })
     }
   }
@@ -54,7 +54,6 @@ export class FollowUserComponent implements OnInit {
     this.userService.getUser()
     .subscribe((response) => {
       this.currentUser = response;
-      console.log('this is the current user', this.currentUser);
     })
   }
 
@@ -66,7 +65,6 @@ export class FollowUserComponent implements OnInit {
   isFollowing() {
     this.userService.currentUserIsFollowing(this.userId)
     .subscribe((response) => {
-      console.log('Current user is following', response);
       if (response.success === true) {
         this.follow = 'following';
       } else {

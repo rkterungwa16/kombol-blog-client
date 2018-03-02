@@ -23,7 +23,6 @@ export class BlogDetailsComponent implements OnInit {
     });
 
     this.getOnePost(this.param);
-    console.log('this is the value of post', this.param);
   }
 
   /**
@@ -34,7 +33,6 @@ export class BlogDetailsComponent implements OnInit {
     this.blogPostService.getOnePost(postId)
       .subscribe((response) => {
         this.post = response.post;
-        console.log(response)
       })
   }
 }

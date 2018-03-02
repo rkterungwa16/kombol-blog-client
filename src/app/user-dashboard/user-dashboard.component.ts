@@ -28,7 +28,6 @@ export class UserDashboardComponent {
   getBlogPosts() {
     this.blogService.getBlogPost()
     .subscribe((response) => {
-      console.log(response);
       this.blogPosts = response;
     });
   }

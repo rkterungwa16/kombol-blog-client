@@ -76,7 +76,6 @@ export class CommentOnBlogPostComponent implements OnInit {
       this.commentDisplay = 'block'
       this.commentOpen = true;
       this.commentMessage = 'Hide comments';
-      console.log('coments for this post', this.postComments);
     } else if (this.commentOpen === true) {
       this.commentDisplay = 'none';
       this.commentOpen = false;
