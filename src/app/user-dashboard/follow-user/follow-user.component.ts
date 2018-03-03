@@ -65,7 +65,7 @@ export class FollowUserComponent implements OnInit {
   isFollowing() {
     this.userService.currentUserIsFollowing(this.userId)
     .subscribe((response) => {
-      if (response.success === true) {
+      if (response.is_following === true) {
         this.follow = 'following';
       } else {
         this.follow = 'follow';

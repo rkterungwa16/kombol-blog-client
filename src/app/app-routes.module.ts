@@ -10,14 +10,14 @@ import { HomePageComponent } from './user-dashboard/home-page/home-page.componen
 import { BlogDetailsComponent } from './user-dashboard/blog-details/blog-details.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: 'register', pathMatch: 'full' },
-    { path: 'dashboard', component: UserDashboardComponent, canActivate: [AuthGuard] },
-    { path: 'register', component: RegisterComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'publish', component: PublishBlogPostComponent, canActivate: [AuthGuard]},
-    { path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
-    { path: 'post/:id', component: BlogDetailsComponent },
-    { path: '**', redirectTo: 'register' }
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: 'dashboard', component: UserDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'publish', component: PublishBlogPostComponent, canActivate: [AuthGuard]},
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
+  { path: 'post/:id', component: BlogDetailsComponent },
+  { path: '**', redirectTo: 'register' }
 ];
 
 @NgModule({

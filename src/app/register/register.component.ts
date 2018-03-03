@@ -23,8 +23,8 @@ export class RegisterComponent implements OnInit {
     errorMessage: string;
 
     constructor(
-        private router: Router,
-        private userService: UserService) { }
+      private router: Router,
+      private userService: UserService) { }
 
     ngOnInit(): void {
       this.registrationForm = new FormGroup({
