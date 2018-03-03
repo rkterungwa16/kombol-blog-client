@@ -1,6 +1,7 @@
 <form class="post-comment" (ngSubmit)="commentOnPost()">
     <div class="container">
       <input
+        [style.borderColor]="borderColor"
         class='comment-input'
         type="text"
         placeholder="Post a comment..."
@@ -10,7 +11,7 @@
       <button class="comment-btn" type="submit">Post</button>
     </div>
 </form>
-<p class="blog-right">
+<p class="blog-right" appRedBorder="'red'">
     <button class="blog-button-right" (click)="showOrHideComments()">
         <b>{{commentMessage}} <span class="tag-white">{{postComments.length}}</span></b>
     </button>

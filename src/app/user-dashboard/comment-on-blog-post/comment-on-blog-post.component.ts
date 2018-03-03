@@ -22,7 +22,7 @@ export class CommentOnBlogPostComponent implements OnInit {
   commentDisplay: string;
   commentMessage: string;
   error: boolean;
-  borderColor = 'red';
+  borderColor = '';
   constructor(
     private blogService: BlogPostService,
   ) { }
@@ -39,8 +39,9 @@ export class CommentOnBlogPostComponent implements OnInit {
    *
    */
   commentOnPost() {
-    if (this.model.comment === '') {
-      this.error = true;
+
+    if (this.model.comment === undefined) {
+      this.borderColor = 'red';
     } else {
       this.postComments.push({
         comment: this.model.comment,

@@ -13,16 +13,15 @@ import { UserService } from '../../services/user.service'
 export class FollowUserComponent implements OnInit {
   @Input() userId
   @Input() postIndex
+  @Input() currentUser
   follow = 'following'
   errorMessage: string
-  currentUser: any = {};
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit() {
     this.isFollowing();
-    this.getCurrentUser();
   }
 
   /**
@@ -43,18 +42,6 @@ export class FollowUserComponent implements OnInit {
         }
       })
     }
-  }
-
-  /**
-   * Get current user
-   *
-   * @return {void}
-   */
-  getCurrentUser() {
-    this.userService.getUser()
-    .subscribe((response) => {
-      this.currentUser = response;
-    })
   }
 
   /**

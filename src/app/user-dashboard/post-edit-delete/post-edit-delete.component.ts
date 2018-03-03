@@ -25,6 +25,8 @@ export class PostEditDeleteComponent implements OnInit {
   model: any = {};
   errorColor = 'red';
   errorMessage: any = {};
+  titleBorderColor = '';
+  contentBorderColor = '';
 
   display: string;
   constructor(
@@ -56,9 +58,9 @@ export class PostEditDeleteComponent implements OnInit {
   editPost() {
 
     if (this.model.title === '') {
-      this.errorMessage.title = 'You need a title for post';
+      this.titleBorderColor = 'red';
     } else if (this.model.content === '') {
-      this.errorMessage.content = 'You need content for post'
+      this.contentBorderColor = 'red';
     } else {
       let postsAfterEdit = this.editCurrentPost(this.blogPosts);
       this.updatedPosts.emit(postsAfterEdit);
@@ -68,7 +70,6 @@ export class PostEditDeleteComponent implements OnInit {
         console.log(response);
       })
     }
-
   }
 
   /**

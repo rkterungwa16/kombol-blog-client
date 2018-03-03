@@ -10,6 +10,8 @@ import { BlogPostService } from '../../services/blog-post.service';
 
 export class PublishBlogPostComponent {
   model: any = {};
+  titleBorderColor = '';
+  contentBorderColor = '';
 
   constructor(
     private router: Router,
@@ -20,9 +22,16 @@ export class PublishBlogPostComponent {
    * Create a new blog post by current user
    */
   publish() {
-    this.blogPostService.publishBlogPost(this.model)
-    .subscribe((response) => {
-      this.router.navigate(['/dashboard']);
-    })
+    if (this.model.title === undefined) {
+      this.titleBorderColor = 'red';
+    } else if (this.model.content === undefined) {
+      this.contentBorderColor = 'red';
+    }else {
+      this.blogPostService.publishBlogPost(this.model)
+      .subscribe((response) => {
+        this.router.navigate(['/dashboard']);
+      })
+    }
+
   }
 }

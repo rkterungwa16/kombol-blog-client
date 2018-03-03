@@ -9,7 +9,7 @@ import { PostEditDeleteComponent } from './post-edit-delete/post-edit-delete.com
 import { CommentOnBlogPostComponent } from './comment-on-blog-post/comment-on-blog-post.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component'
-import { FollowUserComponent } from './follow-user/follow-user.component';
+import { FollowUserComponent } from './follow-user/follow-user.component'
 
 @NgModule({
   imports: [

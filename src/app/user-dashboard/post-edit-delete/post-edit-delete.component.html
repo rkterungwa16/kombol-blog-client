@@ -13,8 +13,8 @@
 
       <div class="container">
         <label for="title"><b>Title</b></label>
-        <span *ngIf="errorMessage.title" [style.color]="errorColor">{{errorMessage.title}}</span>
         <input
+          [style.borderColor] = "titleBorderColor"
           class='edit-input'
           type="text"
           placeholder="Enter new title"
@@ -23,8 +23,8 @@
         >
 
         <label for="content"><b>Content</b></label>
-        <span *ngIf="errorMessage.content" [style.color]="errorColor">{{errorMessage.content}}</span>
         <textarea
+          [style.borderColor] = "contentBorderColor"
           class="edit-input"
           name="content"
           placeholder="Enter new content..."
