@@ -200,6 +200,7 @@ a.post-title:link, a.post-title:visited{
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  width: 100%;
 }
 
 .follow-wrapper {

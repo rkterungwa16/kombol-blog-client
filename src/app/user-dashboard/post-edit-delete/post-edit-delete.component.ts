@@ -22,6 +22,7 @@ export class PostEditDeleteComponent implements OnInit {
   @Output() updatedPosts = new EventEmitter<any[]>();
   modalOpen: boolean = false;
   modalDisplay: string;
+  deleteModalDisplay: string;
   model: any = {};
   errorColor = 'red';
   errorMessage: any = {};
@@ -44,6 +45,7 @@ export class PostEditDeleteComponent implements OnInit {
   deletePost() {
     let postsAfterDelete = this.deleteCurrentPost(this.blogPosts)
     this.updatedPosts.emit(postsAfterDelete);
+    this.openDeleteModal();
     this.blogPostService.deletePost(this.postId)
     .subscribe((response) => {
       console.log(response);
@@ -126,6 +128,21 @@ export class PostEditDeleteComponent implements OnInit {
     } else if (this.modalOpen === true) {
       this.modalDisplay = 'none';
       this.modalOpen = false;
+    }
+  }
+
+  /**
+   * Open or close a modal to delete a post
+   *
+   * @return {void}
+   */
+  openDeleteModal() {
+    if (this.modalOpen === false) {
+      this.deleteModalDisplay = 'block';
+      this.modalOpen = true;
+    } else if (this.modalOpen === true) {
+      this.deleteModalDisplay = 'none';
+      this.modalOpen = false
     }
   }
 }
