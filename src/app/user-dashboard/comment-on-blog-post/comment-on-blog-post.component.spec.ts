@@ -1,5 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { BlogPostService } from '../../services/blog-post.service';
+import { UserService } from '../../services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+
 import { CommentOnBlogPostComponent } from './comment-on-blog-post.component';
 
 describe('CommentOnBlogPostComponent', () => {
@@ -8,7 +15,16 @@ describe('CommentOnBlogPostComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentOnBlogPostComponent ]
+      imports: [
+        FormsModule,
+        HttpModule,
+        HttpClientModule
+      ],
+      declarations: [ CommentOnBlogPostComponent ],
+      providers: [
+        BlogPostService,
+        UserService
+      ]
     })
     .compileComponents();
   }));

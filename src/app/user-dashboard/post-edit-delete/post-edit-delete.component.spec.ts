@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { PostEditDeleteComponent } from './post-edit-delete.component';
+import { BlogPostService } from '../../services/blog-post.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PostEditDeleteComponent', () => {
   let component: PostEditDeleteComponent;
@@ -8,7 +12,17 @@ describe('PostEditDeleteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostEditDeleteComponent ]
+      imports: [
+        FormsModule,
+        HttpModule,
+        HttpClientModule
+      ],
+      declarations: [
+        PostEditDeleteComponent
+      ],
+      providers: [
+        BlogPostService
+      ]
     })
     .compileComponents();
   }));

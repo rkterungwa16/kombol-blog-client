@@ -30,10 +30,7 @@ export class FollowUserComponent implements OnInit {
    * @return {void}
    */
   followUser() {
-    if (this.currentUser.user.id === this.userId) {
-      this.errorMessage = 'You cannot follow your self';
-    } else {
-      this.userService.followAUser(this.userId)
+    this.userService.followAUser(this.userId)
       .subscribe((response) => {
         if (response.success === true) {
           this.follow = 'following';
@@ -41,7 +38,6 @@ export class FollowUserComponent implements OnInit {
           this.follow = 'follow';
         }
       })
-    }
   }
 
   /**

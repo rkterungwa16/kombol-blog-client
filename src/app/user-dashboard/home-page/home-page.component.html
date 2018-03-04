@@ -1,5 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="topnav">
+    <span class="current-user">{{currentUser.username}}</span>
     <div class="dropdown">
       <a class="profile-link dropbtn">
         <img
@@ -29,12 +30,14 @@
                 </a>
                 <div class="follow-wrapper">
                     <span class="post-creator">Created By: {{post.author}}</span>
-                    <app-follow-user
-                      [userId] = "post.user_id"
-                      [postIndex] = "i"
-                      [currentUser] = "currentUser"
-                    >
-                    </app-follow-user>
+                    <div *ngIf="post.user_id !== currentUser.id">
+                        <app-follow-user
+                        [userId] = "post.user_id"
+                        [postIndex] = "i"
+                        [currentUser] = "currentUser"
+                      >
+                      </app-follow-user>
+                    </div>
                 </div>
 
                 <hr>

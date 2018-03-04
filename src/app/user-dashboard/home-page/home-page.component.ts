@@ -21,6 +21,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.getAllBlogPosts();
+    this.getCurrentUser();
   }
 
   /**

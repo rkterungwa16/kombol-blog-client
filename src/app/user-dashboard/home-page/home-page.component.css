@@ -206,3 +206,12 @@ a.post-title:link, a.post-title:visited{
   display: flex;
   margin-top: inherit;
 }
+
+.current-user {
+  font-weight: bold;
+  border: solid 1px lightgray;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+  font-family: 'Fjord One', serif;
+  color: #858A7A;
+  padding: 5px;
+}
