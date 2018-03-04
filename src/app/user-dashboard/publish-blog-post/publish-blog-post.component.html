@@ -3,7 +3,7 @@
       <form (ngSubmit)="publish()">
         <label for="fname">Post title</label>
         <input
-          [style.borderColor]="titleBorderColor"
+          [style.borderColor]="publishTitleBorderColor"
           type="text"
           id="title"
           name="title" placeholder="Your title.."
@@ -12,7 +12,7 @@
 
         <label for="subject">Post content</label>
         <textarea
-          [style.borderColor]="contentBorderColor"
+          [style.borderColor]="publishContentBorderColor"
           id="content"
           name="content"
           placeholder="Write something.."

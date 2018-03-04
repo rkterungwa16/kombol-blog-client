@@ -39,10 +39,13 @@ export class CommentOnBlogPostComponent implements OnInit {
    *
    */
   commentOnPost() {
-
-    if (this.model.comment === undefined) {
+    if (this.model.comment === undefined ||
+      this.model.comment.startsWith(' ') ||
+      this.model.comment.length < 6
+    ) {
       this.borderColor = 'red';
     } else {
+      this.borderColor = '';
       this.postComments.push({
         comment: this.model.comment,
         username: this.currentUser.username
@@ -53,7 +56,6 @@ export class CommentOnBlogPostComponent implements OnInit {
       })
       this.model.comment = '';
     }
-
   }
 
   /**

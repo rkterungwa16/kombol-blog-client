@@ -59,9 +59,15 @@ export class PostEditDeleteComponent implements OnInit {
    */
   editPost() {
 
-    if (this.model.title === '') {
+    if (this.model.title === '' ||
+      this.model.title.startsWith(' ') ||
+      this.model.title.length < 6
+    ) {
       this.titleBorderColor = 'red';
-    } else if (this.model.content === '') {
+    } else if (this.model.content === '' ||
+      this.model.content.startsWith(' ') ||
+      this.model.content.length < 6
+    ) {
       this.contentBorderColor = 'red';
     } else {
       let postsAfterEdit = this.editCurrentPost(this.blogPosts);
