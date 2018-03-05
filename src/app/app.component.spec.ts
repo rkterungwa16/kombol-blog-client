@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common'
 
 import { AppRoutesModule } from './app-routes.module';
 
@@ -37,7 +38,8 @@ describe('AppComponent', () => {
         AuthService,
         AuthGuard,
         UserService,
-        BlogPostService
+        BlogPostService,
+        {provide: APP_BASE_HREF, useValue: '/' }
       ],
       declarations: [
         AppComponent

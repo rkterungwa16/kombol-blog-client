@@ -8,12 +8,16 @@ import { HttpModule } from '@angular/http';
 import { BlogPostService } from '../../services/blog-post.service';
 import { UserService } from '../../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { BlogDetailsComponent } from './blog-details.component';
 
 describe('BlogDetailsComponent', () => {
   let component: BlogDetailsComponent;
   let fixture: ComponentFixture<BlogDetailsComponent>;
+  const fakeActivatedRoute = {
+    snapshot: { data: {} }
+  } as ActivatedRoute;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,7 +30,9 @@ describe('BlogDetailsComponent', () => {
       declarations: [ BlogDetailsComponent ],
       providers: [
         BlogPostService,
-        UserService
+        UserService,
+        {provide: Router, useClass: RouterModule},
+        {provide: ActivatedRoute, useValue: fakeActivatedRoute}
       ]
     })
     .compileComponents();
