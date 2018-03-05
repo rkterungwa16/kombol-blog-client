@@ -16,6 +16,7 @@
 
     <label for="email"><b>Email</b></label>
       <input
+        [style.borderColor] = "registerBorderColor"
         type="text"
         id="email"
         placeholder="Enter Email"
@@ -36,11 +37,12 @@
     <div class='form-group'>
       <label for="name"><b>Username</b></label>
         <input
-        type="text"
-        placeholder="Enter Username"
-        name="username"
-        id="username"
-        formControlName="username" required
+          [style.borderColor] = "registerBorderColor"
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          id="username"
+          formControlName="username" required
       >
 
       <div *ngIf="username.invalid && (username.dirty || username.touched)"
@@ -58,6 +60,7 @@
     <div class='form-group'>
         <label for="password"><b>Password</b></label>
         <input
+          [style.borderColor] = "registerBorderColor"
           type="password"
           placeholder="Password"
           name="password"
@@ -80,6 +83,7 @@
     <div class='form-group'>
       <label for="password_confirmation"><b>Confirm Password</b></label>
       <input
+        [style.borderColor] = "registerBorderColor"
         type="password"
         placeholder="Confirm Password"
         name="confirm-password"
@@ -104,7 +108,18 @@
     </p>
 
     <div class="clearfix">
-      <button type="submit" (click)="register()" class="signupbtn">Sign Up</button>
+      <button
+        type="submit"
+        (click)="register()"
+        class="signupbtn"
+      >
+      <div
+        [style.display]="loading"
+        class="reg-loader"></div>
+        <span id="signupText">
+          Sign Up
+        </span>
+      </button>
     </div>
   </div>
   </form>

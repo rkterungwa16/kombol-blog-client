@@ -19,8 +19,10 @@ export class RegisterComponent implements OnInit {
       password: '',
       password_confirmation: ''
     };
+    registerBorderColor: string;
     registrationForm: FormGroup
     errorMessage: string;
+    loading: string;
 
     constructor(
       private router: Router,
@@ -69,13 +71,25 @@ export class RegisterComponent implements OnInit {
      * @return {void}
      */
     register() {
+      if (this.registrationForm.value.username === '' ||
+        this.registrationForm.value.email === '' ||
+        this.registrationForm.value.password === '' ||
+        this.registrationForm.value.password_confirmation === ''
+    ) {
+      this.registerBorderColor = 'red';
+    } else {
+      this.registerBorderColor = '';
+      this.loading = "block";
       this.userService.registerUser(this.registrationForm.value)
         .subscribe((response) => {
+          this.loading = "none";
           if (response.success === false) {
             this.errorMessage = 'Oops something went wrong';
           } else {
             this.router.navigate(['/login']);
           }
         });
+    }
+      
     }
 }

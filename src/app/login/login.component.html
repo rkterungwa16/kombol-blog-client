@@ -8,8 +8,12 @@
         <h1>Login</h1>
         <p>Please fill in your details</p>
         <hr>
+        <div class="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
         <label for="email"><b>Email</b></label>
           <input
+            [style.borderColor]="loginBorderColor"
             type="text"
             placeholder="Enter Email"
             name="email"
@@ -30,6 +34,7 @@
         <div class='form-group'>
           <label for="psw"><b>Password</b></label>
           <input
+            [style.borderColor]="loginBorderColor"
             type="password"
             placeholder="Password"
             id="password"
@@ -49,7 +54,17 @@
         </div>
 
         <div class="clearfix">
-          <button type="submit" (click)="register()" class="signupbtn">Login</button>
+          <button
+            type="submit"
+            (click)="login()"
+            class="loginbtn">
+            <div
+              [style.display]="loading"
+              class="loader"></div>
+            <span id="loginText">
+              Login
+            </span>
+          </button>
         </div>
       </div>
   </form>

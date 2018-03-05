@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
 import { localStorage } from '../global';
+import { Response } from '../models/response'
 
 @Component({
     moduleId: module.id,
@@ -17,9 +18,11 @@ export class LoginComponent implements OnInit {
       email: '',
       password: ''
     };
+
     loginForm: FormGroup
+    loginBorderColor =  '';
     errorMessage: string;
-    loading = false;
+    loading: string;
 
     constructor(
       private router: Router,
@@ -52,12 +55,21 @@ export class LoginComponent implements OnInit {
      * @return {void}
      */
     login () {
-      this.loading = true;
-      this.authService.login(this.loginForm.value)
-        .subscribe((response) => {
-          localStorage.setItem('kombol-blog-token', response.data.token)
-          localStorage.setItem('current-user-email', response.data.email)
-          this.router.navigate(['/dashboard']);
+      if (this.loginForm.value.email === '' || this.loginForm.value.password === '') {
+        this.loginBorderColor = 'red';
+      } else {
+        this.loading = "block";
+        this.authService.login(this.loginForm.value)
+        .subscribe((response :Response) => {
+          this.loading = "none";
+          if (response.success === false) {
+            this.errorMessage = 'Oops something went wrong';
+          } else {
+            localStorage.setItem('kombol-blog-token', response.data.token)
+            localStorage.setItem('current-user-email', response.data.email)
+            this.router.navigate(['/dashboard']);
+          }
         });
+      }  
     }
 }
