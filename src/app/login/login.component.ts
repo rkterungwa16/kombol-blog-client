@@ -62,14 +62,19 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.loginForm.value)
         .subscribe((response :Response) => {
           this.loading = "none";
-          if (response.success === false) {
-            this.errorMessage = 'Oops something went wrong';
+          if (response.success === false && JSON.parse(response.error).email) {
+            this.errorMessage = JSON.parse(response.error).email[0];
           } else {
             localStorage.setItem('kombol-blog-token', response.data.token)
             localStorage.setItem('current-user-email', response.data.email)
             this.router.navigate(['/dashboard']);
           }
-        });
+        },
+        (errorResponse) => {
+          this.loading = "none";
+          this.errorMessage = errorResponse.error.error;
+        }
+      );
       }  
     }
 }

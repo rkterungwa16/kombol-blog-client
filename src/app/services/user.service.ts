@@ -5,6 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import { localStorage } from '../global';
 
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 @Injectable()
 export class UserService {
   private apiBaseUrl: string = environment.apiBaseUrl;
@@ -27,6 +30,7 @@ export class UserService {
   registerUser(userInfo): Observable<any> {
     return this.http.post(`${this.apiBaseUrl}/v1/register`, userInfo)
       .map((response: Response) => response)
+      .catch((error) => Observable.throw(error));
   }
 
   /**

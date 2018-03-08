@@ -31,6 +31,12 @@ button:hover {
   opacity:1;
 }
 
+button[disabled]{
+  border: 1px solid #918081;
+  background-color: #E8DCDD;
+  color: #6A7373;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;

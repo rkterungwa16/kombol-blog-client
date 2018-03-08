@@ -1,5 +1,4 @@
 <div class="wrapper">
-
     <form
     class="register-form"
     [formGroup] = 'registrationForm'
@@ -110,6 +109,7 @@
 
     <div class="clearfix">
       <button
+        [disabled]="!registrationForm.valid"
         type="submit"
         (click)="register()"
         class="signupbtn"

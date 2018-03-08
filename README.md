@@ -2,7 +2,7 @@
 
 
 ## Introduction
-*  **`WorkList`** is an Laravel Powered web app built to enable users to create blog posts.
+*  **`Kombol-blog-platform`** is an Laravel Powered web app built to enable users to create blog posts.
 * You can find the link to the application here **[kombol-blog-platform](https://kombol-blog.herokuapp.com/)**.
 
 *  It has the following features;
@@ -16,7 +16,7 @@
         *  Follow and unfollow a user
 
 ## Key Features
-Based on project requirement, Worklist has the following features:
+Based on project requirement, kombol-blog-platform has the following features:
 
 ### Users
 - Users can successfully create a new account by providing some signup details
@@ -36,16 +36,13 @@ Based on project requirement, Worklist has the following features:
 *  **[Angular](https://angular.io/)**
 *  **[Postgres](https://www.postgresql.org/)**
 
-## Documentation
-For more in depth documentation see: **[here](https://kombolworklist.docs.apiary.io/)**
-
 ## Installation and setup
 *  Navigate to a directory of choice on `terminal`.
 *  Clone this repository on that directory.
-    >`https://github.com/rkterungwa16/worklist`
+    >`https://github.com/rkterungwa16/kombol-blog`
 
 *  Navigate to the repo's folder on your computer
-  *  `cd kombol-blog-server/`
+  *  `cd kombol-blog/`
 *  Install the app's dependencies. For best results, using a node package manager.
   *  `composer install`
 * 
@@ -57,7 +54,7 @@ That should start your server. You are ready to go from there
 
 ## Contributing to the Project
 Contributions are welcome and appreciated. To contribute
-* Fork this repository [here](https://github.com/rkterungwa16/worklist/)
+* Fork this repository [here](https://github.com/rkterungwa16/kombol-blog/)
 * Open a terminal and execute the following command to make a local copy
 `$ git clone git@github.com:your-username/kombol-blog-server`
 * Run this code to navigate into the folder `cd kombol-blog-server`

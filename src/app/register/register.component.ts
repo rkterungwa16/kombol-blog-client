@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
         'password_confirmation': new FormControl(
           this.model.password_confirmation, [
             Validators.required,
-            Validators.minLength(6)
+            Validators.minLength(6),
           ]
         )
       })
@@ -83,13 +83,19 @@ export class RegisterComponent implements OnInit {
       this.userService.registerUser(this.registrationForm.value)
         .subscribe((response) => {
           this.loading = "none";
-          if (response.success === false) {
-            this.errorMessage = 'Oops something went wrong';
+          if (response.success === false && JSON.parse(response.error).username) {
+            this.errorMessage = JSON.parse(response.error).username[0];
+          } else if (response.success === false && JSON.parse(response.error).email) {
+            this.errorMessage = response.error.username[0];
           } else {
             this.router.navigate(['/login']);
           }
-        });
-    }
-      
-    }
+        },
+        (errorResponse) => {
+          this.loading = "none";
+          this.errorMessage = errorResponse.error.error;
+        }
+      );
+    }    
+  }
 }

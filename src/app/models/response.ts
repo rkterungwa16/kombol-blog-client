@@ -8,4 +8,5 @@ export interface Response {
       token: string,
       email: string
     };
+    error: string
   }
