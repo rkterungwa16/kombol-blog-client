@@ -22,6 +22,7 @@ export class CommentOnBlogPostComponent implements OnInit {
   commentDisplay: string;
   commentMessage: string;
   error: boolean;
+  success: boolean;
   borderColor = '';
   constructor(
     private blogService: BlogPostService,
@@ -52,7 +53,7 @@ export class CommentOnBlogPostComponent implements OnInit {
       });
       this.blogService.commentOnPost(this.postId, this.model )
       .subscribe((response) => {
-        console.log(response)
+        this.success = response.success;
       })
       this.model.comment = '';
     }

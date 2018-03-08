@@ -1,22 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="topnav">
-    <span class="current-user">{{currentUser.username}}</span>
-    <div class="dropdown">
-      <a class="profile-link dropbtn">
-        <img
-          src="https://res.cloudinary.com/doy0uyv63/image/upload/v1513431912/Screen_Shot_2017-12-16_at_2.38.38_PM_bxpyhd.png"
-          alt=""
-          class="profile-img"
-        >
-      </a>
-      <div class="dropdown-content">
-        <a [routerLink]="['/publish']">create post</a>
-        <a [routerLink]="['/dashboard']">dashboard</a>
-        <a href="#">logout</a>
-      </div>
-    </div>
-  </div>
-
+<app-nav-bar></app-nav-bar>
   <div class='home-page'>
       <div class="your-blog-heading">
       <h1 class="post-info bold">Other blogs</h1>

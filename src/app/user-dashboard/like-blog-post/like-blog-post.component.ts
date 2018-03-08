@@ -17,6 +17,7 @@ export class LikeBlogPostComponent implements OnInit {
   postLikes = [];
   currentUserEmail: string
   like = false;
+  success: boolean;
 
   constructor(
     private blogPostService: BlogPostService
@@ -37,7 +38,7 @@ export class LikeBlogPostComponent implements OnInit {
     this.currentUserLikedPost(this.postLikes);
     this.blogPostService.likePost(this.postId)
     .subscribe((response) => {
-      console.log(response);
+      this.success = response.success;
     })
   }
 

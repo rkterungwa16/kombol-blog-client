@@ -24,6 +24,7 @@ export class PostEditDeleteComponent implements OnInit {
   modalDisplay: string;
   deleteModalDisplay: string;
   model: any = {};
+  success: true;
   errorColor = 'red';
   errorMessage: any = {};
   titleBorderColor = '';
@@ -48,7 +49,7 @@ export class PostEditDeleteComponent implements OnInit {
     this.openDeleteModal();
     this.blogPostService.deletePost(this.postId)
     .subscribe((response) => {
-      console.log(response);
+      this.success = response.success;
     })
   }
 
@@ -75,7 +76,7 @@ export class PostEditDeleteComponent implements OnInit {
       this.openModal();
       this.blogPostService.editPost(this.postId, this.model)
       .subscribe((response) => {
-        console.log(response);
+        this.success = response.success;
       })
     }
   }

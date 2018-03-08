@@ -1,33 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="topnav">
-    <div class="dropdown">
-      <a class="profile-link dropbtn">
-        <img
-          src="https://res.cloudinary.com/doy0uyv63/image/upload/v1513431912/Screen_Shot_2017-12-16_at_2.38.38_PM_bxpyhd.png"
-          alt=""
-          class="profile-img"
-        >
-      </a>
-      <div class="dropdown-content">
-        <a [routerLink]="['/publish']">create post</a>
-        <a [routerLink]="['/dashboard']">dashboard</a>
-        <a href="#">logout</a>
-      </div>
-    </div>
-  </div>
-
-  <div class='post-page'>
-      <div>
-          <div class="post-header">
-              <div class="post-card">
-                <p class="post-quote">{{post.title}}</p>
-                <span class="post-creator-details">By: {{post.author}}</span>
-                <hr>
-                <div class="post-container">
-                  <h1 class="post-content">{{post.content}}</h1>
-                </div>
-              </div>
-            </div>
+<app-nav-bar></app-nav-bar>
+<div class='post-page'>
+  <div>
+    <div class="post-header">
+        <div class="post-card">
+          <p class="post-quote">{{post.title}}</p>
+          <span class="post-creator-details">By: {{post.author}}</span>
+          <hr>
+          <div class="post-container">
+            <h1 class="post-content">{{post.content}}</h1>
+          </div>
+        </div>
       </div>
   </div>
+</div>
 

@@ -10,6 +10,7 @@ import { CommentOnBlogPostComponent } from './comment-on-blog-post/comment-on-bl
 import { HomePageComponent } from './home-page/home-page.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component'
 import { FollowUserComponent } from './follow-user/follow-user.component'
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { FollowUserComponent } from './follow-user/follow-user.component'
     CommentOnBlogPostComponent,
     HomePageComponent,
     BlogDetailsComponent,
-    FollowUserComponent
+    FollowUserComponent,
+    NavBarComponent
   ]
 })
 export class UserDashboardModule { }

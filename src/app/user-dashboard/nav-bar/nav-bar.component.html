@@ -1,0 +1,18 @@
+<div class="topnav">
+  <a [routerLink]="['/home']">home</a>
+  <a>{{currentUser.username}}: {{currentUser.email}}</a>
+  <div class="dropdown">
+    <a class="profile-link dropbtn">
+      <img
+        src="https://res.cloudinary.com/doy0uyv63/image/upload/v1513431912/Screen_Shot_2017-12-16_at_2.38.38_PM_bxpyhd.png"
+        alt=""
+        class="profile-img"
+      >
+    </a>
+    <div class="dropdown-content">
+      <a [routerLink]="['/publish']">create post</a>
+      <a [routerLink]="['/dashboard']">dashboard</a>
+      <a href="#">logout</a>
+    </div>
+  </div>
+</div>
