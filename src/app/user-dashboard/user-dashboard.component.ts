@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service'
 export class UserDashboardComponent {
   blogPosts = [];
   currentUser: any = {};
+  loading: boolean;
 
   constructor (
     private blogService: BlogPostService,
@@ -26,8 +27,10 @@ export class UserDashboardComponent {
    * Get all blog posts by a current user
    */
   getBlogPosts() {
+    this.loading = true;
     this.blogService.getBlogPost()
     .subscribe((response) => {
+      this.loading = false;
       this.blogPosts = response;
     });
   }

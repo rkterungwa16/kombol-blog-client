@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://kombol-blog.herokuapp.com/api'
+  apiBaseUrl: 'http://localhost:8000/api'
 };

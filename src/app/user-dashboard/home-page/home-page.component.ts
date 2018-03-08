@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
 
   blogPosts = [];
   currentUser: any = {};
+  loading: boolean;
 
   constructor (
     private blogService: BlogPostService,
@@ -28,8 +29,10 @@ export class HomePageComponent implements OnInit {
    * Get all blog posts by a current user
    */
   getAllBlogPosts() {
+    this.loading = true;
     this.blogService.getAllBlogPosts()
     .subscribe((response) => {
+      this.loading = false;
       this.blogPosts = response.all_posts;
     });
   }

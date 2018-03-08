@@ -20,7 +20,8 @@
     <div class="your-blog-heading">
     <h1 class="post-info bold">Your blogs</h1>
     </div>
-    <div *ngIf="blogPosts.length===0">You do not have any blog posts</div>
+    <div *ngIf="blogPosts.length===0 && loading===false">You do not have any blog posts</div>
+    <div *ngIf="loading===true" class="page-loader"></div>
     <div *ngIf="blogPosts" >
         <div *ngFor="let post of blogPosts let i=index"  class="your-blogs">
             <div class="card">
