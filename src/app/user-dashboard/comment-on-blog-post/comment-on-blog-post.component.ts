@@ -4,7 +4,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { BlogPostService } from '../../services/blog-post.service'
+import { BlogPostService } from '../../services/blog-post.service';
 
 @Component({
   selector: 'app-comment-on-blog-post',
@@ -18,7 +18,7 @@ export class CommentOnBlogPostComponent implements OnInit {
   @Input() currentUser;
   model: any = {};
   postComments: any[];
-  commentOpen: boolean = false;
+  commentOpen = false;
   commentDisplay: string;
   commentMessage: string;
   error: boolean;
@@ -54,7 +54,7 @@ export class CommentOnBlogPostComponent implements OnInit {
       this.blogService.commentOnPost(this.postId, this.model )
       .subscribe((response) => {
         this.success = response.success;
-      })
+      });
       this.model.comment = '';
     }
   }
@@ -67,7 +67,7 @@ export class CommentOnBlogPostComponent implements OnInit {
     this.blogService.getAllPostComments(this.postId)
     .subscribe((response) => {
       this.postComments = response.post_comments;
-    })
+    });
   }
 
   /**
@@ -77,7 +77,7 @@ export class CommentOnBlogPostComponent implements OnInit {
    */
   showOrHideComments() {
     if (this.commentOpen === false) {
-      this.commentDisplay = 'block'
+      this.commentDisplay = 'block';
       this.commentOpen = true;
       this.commentMessage = 'Hide comments';
     } else if (this.commentOpen === true) {

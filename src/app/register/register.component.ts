@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       password_confirmation: ''
     };
     registerBorderColor: string;
-    registrationForm: FormGroup
+    registrationForm: FormGroup;
     errorMessage: string;
     loading: string;
 
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
             Validators.minLength(6),
           ]
         )
-      })
+      });
     }
     get email() { return this.registrationForm.get('email'); }
 
@@ -79,10 +79,10 @@ export class RegisterComponent implements OnInit {
       this.registerBorderColor = 'red';
     } else {
       this.registerBorderColor = '';
-      this.loading = "block";
+      this.loading = 'block';
       this.userService.registerUser(this.registrationForm.value)
         .subscribe((response) => {
-          this.loading = "none";
+          this.loading = 'none';
           if (response.success === false && JSON.parse(response.error).username) {
             this.errorMessage = JSON.parse(response.error).username[0];
           } else if (response.success === false && JSON.parse(response.error).email) {
@@ -92,10 +92,10 @@ export class RegisterComponent implements OnInit {
           }
         },
         (errorResponse) => {
-          this.loading = "none";
+          this.loading = 'none';
           this.errorMessage = errorResponse.error.error;
         }
       );
-    }    
+    }
   }
 }

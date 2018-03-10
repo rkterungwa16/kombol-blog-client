@@ -6,7 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { BlogPostService } from '../../services/blog-post.service'
+import { BlogPostService } from '../../services/blog-post.service';
 
 @Component({
   selector: 'app-post-edit-delete',
@@ -20,7 +20,7 @@ export class PostEditDeleteComponent implements OnInit {
   @Input() authorId;
   @Input() blogPosts;
   @Output() updatedPosts = new EventEmitter<any[]>();
-  modalOpen: boolean = false;
+  modalOpen = false;
   modalDisplay: string;
   deleteModalDisplay: string;
   model: any = {};
@@ -44,13 +44,13 @@ export class PostEditDeleteComponent implements OnInit {
    * @return {void}
    */
   deletePost() {
-    let postsAfterDelete = this.deleteCurrentPost(this.blogPosts)
+    const postsAfterDelete = this.deleteCurrentPost(this.blogPosts);
     this.updatedPosts.emit(postsAfterDelete);
     this.openDeleteModal();
     this.blogPostService.deletePost(this.postId)
     .subscribe((response) => {
       this.success = response.success;
-    })
+    });
   }
 
   /**
@@ -71,13 +71,13 @@ export class PostEditDeleteComponent implements OnInit {
     ) {
       this.contentBorderColor = 'red';
     } else {
-      let postsAfterEdit = this.editCurrentPost(this.blogPosts);
+      const postsAfterEdit = this.editCurrentPost(this.blogPosts);
       this.updatedPosts.emit(postsAfterEdit);
       this.openModal();
       this.blogPostService.editPost(this.postId, this.model)
       .subscribe((response) => {
         this.success = response.success;
-      })
+      });
     }
   }
 
@@ -93,8 +93,8 @@ export class PostEditDeleteComponent implements OnInit {
     let currentPost;
     posts.forEach((member, index) => {
       if (member.id === this.postId && member.user_id === this.authorId) {
-          postExists = true
-          currentPost = index
+          postExists = true;
+          currentPost = index;
       }
     });
     if (postExists === true) {
@@ -130,7 +130,7 @@ export class PostEditDeleteComponent implements OnInit {
     this.model.title = this.blogPosts[this.postIndex].title;
     this.model.content = this.blogPosts[this.postIndex].content;
     if (this.modalOpen === false) {
-      this.modalDisplay = 'block'
+      this.modalDisplay = 'block';
       this.modalOpen = true;
     } else if (this.modalOpen === true) {
       this.modalDisplay = 'none';
@@ -149,7 +149,7 @@ export class PostEditDeleteComponent implements OnInit {
       this.modalOpen = true;
     } else if (this.modalOpen === true) {
       this.deleteModalDisplay = 'none';
-      this.modalOpen = false
+      this.modalOpen = false;
     }
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
-import { BlogPostService } from '../../services/blog-post.service'
+import { BlogPostService } from '../../services/blog-post.service';
 
 @Component({
   selector: 'app-blog-details',
@@ -10,7 +10,7 @@ import { BlogPostService } from '../../services/blog-post.service'
   styleUrls: ['./blog-details.component.css']
 })
 export class BlogDetailsComponent implements OnInit {
-  param: string
+  param: string;
   post: any = {};
   constructor(
     private route: ActivatedRoute,
@@ -28,11 +28,12 @@ export class BlogDetailsComponent implements OnInit {
   /**
    * Comment on a blog post
    *
+   * @return {void}
    */
   getOnePost(postId) {
     this.blogPostService.getOnePost(postId)
       .subscribe((response) => {
         this.post = response.post;
-      })
+      });
   }
 }

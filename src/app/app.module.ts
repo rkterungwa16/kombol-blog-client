@@ -17,7 +17,7 @@ import { RegisterModule } from './register/register.module';
 import { PublishBlogPostModule } from './user-dashboard/publish-blog-post/publish-blog-post.module';
 
 import { UserService } from './services/user.service';
-import { BlogPostService } from './services/blog-post.service'
+import { BlogPostService } from './services/blog-post.service';
 
 
 @NgModule({

@@ -1,27 +1,30 @@
 import {
   Component,
-  OnInit,
+  OnChanges,
+  SimpleChanges,
   Input
 } from '@angular/core';
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-follow-user',
   templateUrl: './follow-user.component.html',
   styleUrls: ['./follow-user.component.css']
 })
-export class FollowUserComponent implements OnInit {
-  @Input() userId
-  @Input() postIndex
-  @Input() currentUser
-  follow = 'following'
-  errorMessage: string
+export class FollowUserComponent implements OnChanges {
+  @Input() userId;
+  @Input() postIndex;
+  @Input() currentUser;
+  follow = 'following';
+  errorMessage: string;
   constructor(
     private userService: UserService
   ) { }
 
-  ngOnInit() {
-    this.isFollowing();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['userId']) {
+      this.isFollowing();
+    }
   }
 
   /**
@@ -37,7 +40,7 @@ export class FollowUserComponent implements OnInit {
         } else if (response.success === false) {
           this.follow = 'follow';
         }
-      })
+      });
   }
 
   /**
@@ -53,7 +56,7 @@ export class FollowUserComponent implements OnInit {
       } else {
         this.follow = 'follow';
       }
-    })
+    });
   }
 }
 

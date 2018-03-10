@@ -3,7 +3,7 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { BlogPostService } from '../../services/blog-post.service'
+import { BlogPostService } from '../../services/blog-post.service';
 
 @Component({
   selector: 'app-like-blog-post',
@@ -13,16 +13,16 @@ import { BlogPostService } from '../../services/blog-post.service'
 export class LikeBlogPostComponent implements OnInit {
 
   @Input() postId;
-  @Input() authorId
+  @Input() authorId;
   postLikes = [];
-  currentUserEmail: string
+  currentUserEmail: string;
   like = false;
   success: boolean;
 
   constructor(
     private blogPostService: BlogPostService
   ) {
-    this.currentUserEmail = localStorage.getItem('current-user-email')
+    this.currentUserEmail = localStorage.getItem('current-user-email');
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class LikeBlogPostComponent implements OnInit {
     this.blogPostService.likePost(this.postId)
     .subscribe((response) => {
       this.success = response.success;
-    })
+    });
   }
 
   /**
@@ -51,7 +51,7 @@ export class LikeBlogPostComponent implements OnInit {
     this.blogPostService.getPostLikes(this.postId)
     .subscribe((response) => {
       this.postLikes = response.post_likes;
-    })
+    });
   }
 
   /**
@@ -67,8 +67,8 @@ export class LikeBlogPostComponent implements OnInit {
     let currentUser;
     postLikes.forEach((member, index) => {
         if (member.email === this.currentUserEmail) {
-            likedPost = true
-            currentUser = index
+            likedPost = true;
+            currentUser = index;
         } else {
           likedPost = false;
         }
