@@ -73,4 +73,14 @@ export class UserService {
     return this.http
     .get(`${this.apiBaseUrl}/v1/user/followers`, { headers: this.headers });
   }
+
+  /**
+   * Get all registered users current user is following
+   *
+   * @return {observable} Observable containing current user's info
+  */
+ getCurrentUserFollowing(): Observable<any> {
+  return this.http
+  .get(`${this.apiBaseUrl}/v1/user/following`, { headers: this.headers });
+}
 }

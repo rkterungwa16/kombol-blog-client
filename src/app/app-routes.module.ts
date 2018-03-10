@@ -9,6 +9,7 @@ import { PublishBlogPostComponent } from './user-dashboard/publish-blog-post/pub
 import { HomePageComponent } from './user-dashboard/home-page/home-page.component';
 import { BlogDetailsComponent } from './user-dashboard/blog-details/blog-details.component';
 import { UserFollowersComponent } from './user-dashboard/user-followers/user-followers.component';
+import { UserFollowingComponent } from './user-dashboard/user-following/user-following.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   { path: 'publish', component: PublishBlogPostComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
   { path: 'post/:id', component: BlogDetailsComponent },
-  { path: 'user/followers', component: UserFollowersComponent},
+  { path: 'user/followers', component: UserFollowersComponent },
+  { path: 'user/following', component: UserFollowingComponent },
   { path: '**', redirectTo: 'register' }
 ];
 

@@ -13,6 +13,7 @@ import { FollowUserComponent } from './follow-user/follow-user.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UserFollowersComponent } from './user-followers/user-followers.component';
 import { PublishBlogPostComponent } from './publish-blog-post/publish-blog-post.component';
+import { UserFollowingComponent } from './user-following/user-following.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { PublishBlogPostComponent } from './publish-blog-post/publish-blog-post.
     FollowUserComponent,
     NavBarComponent,
     UserFollowersComponent,
-    PublishBlogPostComponent
+    PublishBlogPostComponent,
+    UserFollowingComponent
   ]
 })
 export class UserDashboardModule { }
