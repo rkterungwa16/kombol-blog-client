@@ -71,7 +71,7 @@ export class BlogPostService {
    * @return {observable} Observable indicating post is liked
    */
   likePost(postId): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/v1/post/like/${postId}/`, {}, { headers: this.headers })
+    return this.http.post(`${this.apiBaseUrl}/v1/post/like/${postId}`, {}, { headers: this.headers })
     .map((response: Response) => response);
   }
 
