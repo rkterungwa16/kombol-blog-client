@@ -36,7 +36,7 @@ export class PublishBlogPostComponent {
       this.blogPostService.publishBlogPost(this.model)
       .subscribe((response) => {
         this.router.navigate(['/dashboard']);
-      })
+      });
     }
 
   }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BlogPostService } from '../services/blog-post.service'
-import { UserService } from '../services/user.service'
+import { BlogPostService } from '../services/blog-post.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css']
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnInit {
   blogPosts = [];
   currentUser: any = {};
   loading: boolean;
@@ -43,7 +43,7 @@ export class UserDashboardComponent {
     this.userService.getUser()
     .subscribe((response) => {
       this.currentUser = response.user;
-    })
+    });
   }
 
   /**

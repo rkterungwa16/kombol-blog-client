@@ -1,0 +1,22 @@
+<app-nav-bar></app-nav-bar>
+<div class='home-page'>
+    <div class="your-blog-heading">
+    <h1 class="post-info bold">Your Followers</h1>
+    </div>
+    <div *ngIf="userFollowers.length===0 && loading===false">You do not have any followers</div>
+    <div *ngIf="loading===true" class="page-loader"></div>
+    <div *ngIf="userFollowers" >
+      <div *ngFor="let followers of userFollowers let i=index">
+          <div class="follower-card">
+              <img
+                class="follower-img"
+                src="https://res.cloudinary.com/doy0uyv63/image/upload/v1513431912/Screen_Shot_2017-12-16_at_2.38.38_PM_bxpyhd.png"
+                alt="John"
+              >
+              <h1>{{followers.follower_username}}</h1>
+              <p class="title">{{followers.follower_email}}</p>
+              <p><button>Contact</button></p>
+          </div>
+        </div>
+    </div>
+</div>

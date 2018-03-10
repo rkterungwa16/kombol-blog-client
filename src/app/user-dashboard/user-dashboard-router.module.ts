@@ -4,11 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserDashboardComponent } from './user-dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { UserFollowersComponent } from './user-followers/user-followers.component';
+import { PublishBlogPostComponent } from './publish-blog-post/publish-blog-post.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: UserDashboardComponent },
   { path: 'home', component: HomePageComponent },
-  { path: 'post/:id', component: BlogDetailsComponent }
+  { path: 'post/:id', component: BlogDetailsComponent },
+  { path: 'user/followers', component: UserFollowersComponent},
+  { path: 'publish', component: PublishBlogPostComponent }
 ];
 
 @NgModule({

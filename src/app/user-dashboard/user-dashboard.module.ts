@@ -11,6 +11,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { FollowUserComponent } from './follow-user/follow-user.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { UserFollowersComponent } from './user-followers/user-followers.component';
+import { PublishBlogPostComponent } from './publish-blog-post/publish-blog-post.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     BlogDetailsComponent,
     FollowUserComponent,
     NavBarComponent,
+    UserFollowersComponent,
+    PublishBlogPostComponent
   ]
 })
 export class UserDashboardModule { }

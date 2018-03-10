@@ -17,7 +17,7 @@ export class CommentOnBlogPostComponent implements OnInit {
   @Input() postIndex;
   @Input() currentUser;
   model: any = {};
-  postComments: any[];
+  postComments = [];
   commentOpen = false;
   commentDisplay: string;
   commentMessage: string;

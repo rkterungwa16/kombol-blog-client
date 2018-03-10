@@ -1,25 +1,26 @@
 <div>
-    <div class="post_container">
-      <form (ngSubmit)="publish()">
-        <label for="fname">Post title</label>
-        <input
-          [style.borderColor]="publishTitleBorderColor"
-          type="text"
-          id="title"
-          name="title" placeholder="Your title.."
-          [(ngModel)]="model.title"
-        >
+  <app-nav-bar></app-nav-bar>
+  <div class="post_container">
+    <form (ngSubmit)="publish()">
+      <label for="fname">Post title</label>
+      <input
+        [style.borderColor]="publishTitleBorderColor"
+        type="text"
+        id="title"
+        name="title" placeholder="Your title.."
+        [(ngModel)]="model.title"
+      >
 
-        <label for="subject">Post content</label>
-        <textarea
-          [style.borderColor]="publishContentBorderColor"
-          id="content"
-          name="content"
-          placeholder="Write something.."
-          style="height:200px"
-          [(ngModel)]="model.content"
-        ></textarea>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
+      <label for="subject">Post content</label>
+      <textarea
+        [style.borderColor]="publishContentBorderColor"
+        id="content"
+        name="content"
+        placeholder="Write something.."
+        style="height:200px"
+        [(ngModel)]="model.content"
+      ></textarea>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 </div>

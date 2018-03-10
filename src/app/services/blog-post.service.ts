@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 import { localStorage } from '../global';
 
 @Injectable()
 export class BlogPostService {
   private apiBaseUrl: string = environment.apiBaseUrl;
-  private headers: HttpHeaders
-  private token: string
+  private headers: HttpHeaders;
+  private token: string;
 
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('kombol-blog-token');
     this.headers = new HttpHeaders()
-    .set("Authorization", `Bearer ${this.token}`);
+    .set('Authorization', `Bearer ${this.token}`);
   }
 
   /**
@@ -26,7 +26,7 @@ export class BlogPostService {
   getBlogPost(): Observable<any> {
     return this.http
     .get(`${this.apiBaseUrl}/v1/blog/posts`, {headers: this.headers})
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -37,7 +37,7 @@ export class BlogPostService {
   getAllBlogPosts(): Observable<any> {
     return this.http
     .get(`${this.apiBaseUrl}/v1/all-posts`, {headers: this.headers})
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -48,7 +48,7 @@ export class BlogPostService {
   getOnePost(postId): Observable<any> {
     return this.http
     .get(`${this.apiBaseUrl}/v1/post/${postId}`, {headers: this.headers})
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -59,8 +59,8 @@ export class BlogPostService {
    * @return {observable} Observable indicating post is created
    */
   publishBlogPost(blogPost): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/v1/blog/post`,blogPost, {headers: this.headers})
-    .map((response: Response) => response)
+    return this.http.post(`${this.apiBaseUrl}/v1/blog/post`, blogPost, {headers: this.headers})
+    .map((response: Response) => response);
   }
 
   /**
@@ -72,7 +72,7 @@ export class BlogPostService {
    */
   likePost(postId): Observable<any> {
     return this.http.post(`${this.apiBaseUrl}/v1/post/like/${postId}/`, {}, { headers: this.headers })
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -85,7 +85,7 @@ export class BlogPostService {
   getPostLikes(postId): Observable<any> {
     return this.http
     .get(`${this.apiBaseUrl}/v1/post/likes/${postId}`, { headers: this.headers })
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -99,7 +99,7 @@ export class BlogPostService {
   editPost(postId, editedPost): Observable<any> {
     return this.http
     .patch(`${this.apiBaseUrl}/v1/blog/post/${postId}`, editedPost, { headers: this.headers })
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -111,7 +111,7 @@ export class BlogPostService {
    */
   deletePost(postId): Observable<any> {
     return this.http
-    .delete(`${this.apiBaseUrl}/v1/blog/post/${postId}`, { headers: this.headers })
+    .delete(`${this.apiBaseUrl}/v1/blog/post/${postId}`, { headers: this.headers });
   }
 
   /**
@@ -125,7 +125,7 @@ export class BlogPostService {
   commentOnPost(postId, postComment): Observable<any> {
     return this.http
     .post(`${this.apiBaseUrl}/v1/post/comment/${postId}`, postComment, { headers: this.headers })
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -138,6 +138,6 @@ export class BlogPostService {
   getAllPostComments(postId): Observable<any> {
     return this.http
     .get(`${this.apiBaseUrl}/v1/post/comments/${postId}`, { headers: this.headers })
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 }

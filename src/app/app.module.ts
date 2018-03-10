@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
-import { PublishBlogPostModule } from './user-dashboard/publish-blog-post/publish-blog-post.module';
 
 import { UserService } from './services/user.service';
 import { BlogPostService } from './services/blog-post.service';
@@ -28,7 +27,6 @@ import { BlogPostService } from './services/blog-post.service';
     AppRoutesModule,
     BrowserModule,
     UserDashboardModule,
-    PublishBlogPostModule,
     LoginModule,
     HttpModule,
     FormsModule,

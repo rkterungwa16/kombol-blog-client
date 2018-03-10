@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('kombol-blog-token');
     this.headers = new HttpHeaders()
-    .set("Authorization", `Bearer ${this.token}`);
+    .set('Authorization', `Bearer ${this.token}`);
   }
 
   /**
@@ -41,7 +41,7 @@ export class UserService {
   getUser(): Observable<any> {
     return this.http
     .get(`${this.apiBaseUrl}/v1/user`, {headers: this.headers})
-    .map((response: Response) => response)
+    .map((response: Response) => response);
   }
 
   /**
@@ -51,7 +51,7 @@ export class UserService {
   */
   followAUser(userId): Observable<any> {
     return this.http
-    .post(`${this.apiBaseUrl}/v1/user/follow/${userId}`, {}, { headers: this.headers })
+    .post(`${this.apiBaseUrl}/v1/user/follow/${userId}`, {}, { headers: this.headers });
   }
 
   /**
@@ -61,6 +61,16 @@ export class UserService {
   */
   currentUserIsFollowing(userId): Observable<any> {
     return this.http
-    .get(`${this.apiBaseUrl}/v1/user/is-following/${userId}`, { headers: this.headers })
+    .get(`${this.apiBaseUrl}/v1/user/is-following/${userId}`, { headers: this.headers });
   }
+
+  /**
+   * Get all current user's followers
+   *
+   * @return {observable} Observable containing current user's info
+  */
+ getCurrentUserFollowers(): Observable<any> {
+  return this.http
+  .get(`${this.apiBaseUrl}/v1/user/followers/`, { headers: this.headers });
+}
 }
