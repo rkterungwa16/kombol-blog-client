@@ -23,10 +23,38 @@
     >
       <button
         *ngIf="currentUser.id === comments.user_id"
+        class="comment-edit-btn"
+        (click)="openEditBox({
+          commentId: comments.id,
+          comment: comments.comment
+        })"><i class="fa fa-edit"></i>
+      </button>
+      <button
+        *ngIf="currentUser.id === comments.user_id"
         class="comment-del-btn"
-        (click)="deleteComment(comments.id)"><i class="fa fa-trash"></i></button>
+        (click)="deleteComment(comments.id)"><i class="fa fa-trash"></i>
+      </button>
       <h4>{{comments.username}}</h4>
-      <p>{{comments.comment}}</p>
+      <p
+        *ngIf="commentId!==comments.id"
+      >{{comments.comment}}</p>
+      <form
+        class="edit-comment"
+        (ngSubmit)="editComment()"
+        *ngIf="openEdit===true && commentId===comments.id"
+      >
+          <div class="container">
+            <input
+              [style.borderColor]="borderColor"
+              class='edit-input'
+              type="text"
+              placeholder="Edit comment..."
+              name="comment"
+              [(ngModel)]="editModel.comment"
+            >
+            <button class="comment-btn" type="submit">Edit</button>
+          </div>
+      </form>
     </div>
 </div>
 

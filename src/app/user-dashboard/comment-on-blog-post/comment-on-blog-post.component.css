@@ -7,10 +7,19 @@
   box-sizing: border-box;
 }
 
+.edit-input {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
 .comment-btn {
   margin-top: 20px;
   height: 40px;
-  width: 80px;
+  width: 50px;
 }
 
 .post-comments {
@@ -44,7 +53,7 @@
   float: right;
 }
 
-.comment-del-btn {
+.comment-edit-btn {
   border: none;
   color: black;
   font-size: 16px;

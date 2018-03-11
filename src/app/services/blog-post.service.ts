@@ -153,4 +153,18 @@ export class BlogPostService {
     .delete(`${this.apiBaseUrl}/v1/post/comments/${commentId}`, { headers: this.headers })
     .map((response: Response) => response);
   }
+
+  /**
+   * Edits a comment in a post
+   *
+   * @param {number} commentId the number representing the comment id
+   * @param {object} editedComment updated comment of the post
+   *
+   * @return {observable} Observable response
+   */
+  editPostComment(commentId, editedComment): Observable<any> {
+    return this.http
+    .patch(`${this.apiBaseUrl}/v1/post/comments/${commentId}`, editedComment, { headers: this.headers })
+    .map((response: Response) => response);
+  }
 }

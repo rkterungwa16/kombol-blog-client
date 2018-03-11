@@ -13,12 +13,17 @@ import { BlogPostService } from '../../services/blog-post.service';
 })
 export class CommentOnBlogPostComponent implements OnInit {
 
+  contentBorderColor: string;
   @Input() postId;
   @Input() postIndex;
   @Input() currentUser;
   model: any = {};
+  editModel: any = {};
   postComments = [];
   commentOpen = false;
+  commentId = -1;
+  openEdit = false;
+  titleBorderColor: string;
   commentDisplay: string;
   commentMessage: string;
   error: boolean;
@@ -38,6 +43,7 @@ export class CommentOnBlogPostComponent implements OnInit {
   /**
    * Comment on a blog post
    *
+   * @return {void}
    */
   commentOnPost() {
     if (this.model.comment === undefined ||
@@ -63,6 +69,7 @@ export class CommentOnBlogPostComponent implements OnInit {
   /**
    * Get all comments on a blog post
    *
+   * @return {void}
    */
   getCommentsOnPost() {
     this.blogService.getAllPostComments(this.postId)
@@ -118,5 +125,67 @@ export class CommentOnBlogPostComponent implements OnInit {
       }
     });
     this.postComments.splice(currentComment, 1);
+  }
+
+  /**
+   * Open Inbox of selected comment to edit
+   *
+   * @param {object} commentValues
+   *
+   * @return {void}
+   */
+  openEditBox(commentValues) {
+    if (this.openEdit === false) {
+      this.openEdit = true;
+      this.commentId = commentValues.commentId;
+      this.editModel.comment = commentValues.comment;
+
+    } else {
+      this.openEdit = false;
+      this.commentId = -1;
+      this.borderColor = '';
+    }
+  }
+
+  /**
+   * Edit a comment on a post
+   *
+   * @return {void}
+   */
+  editComment() {
+
+    if (this.editModel.comment === '' ||
+      this.editModel.comment.startsWith(' ') ||
+      this.editModel.comment.length < 6
+    ) {
+      this.borderColor = 'red';
+    } else if (this.editModel.comment === '' ||
+      this.editModel.comment.startsWith(' ') ||
+      this.editModel.comment.length < 6
+    ) {
+      this.borderColor = 'red';
+    } else {
+      const postsAfterEdit = this.editCurrentComment(this.commentId);
+      this.blogService.editPostComment(this.commentId, this.editModel)
+      .subscribe((response) => {
+        this.success = response.success;
+      });
+      this.openEditBox({});
+    }
+  }
+
+  /**
+   * Edit selected comment created by current user dynamically
+   *
+   * @param {array} commentId comment id
+   *
+   * @return {void}
+   */
+  editCurrentComment(commentId) {
+    this.postComments.forEach((member, index) => {
+      if (member.id === commentId) {
+          member.comment = this.editModel.comment;
+      }
+    });
   }
 }
