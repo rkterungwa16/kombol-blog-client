@@ -26,7 +26,6 @@ export class UserFollowingComponent implements OnInit {
     this.loading = true;
     this.userService.getCurrentUserFollowing()
     .subscribe((response) => {
-      console.log('I am following these people', response);
       this.loading = false;
       this.usersFollowing = response.followers;
     });

@@ -16,6 +16,7 @@
 .post-comments {
   border: solid 1px #948383;
   padding: 10px;
+  margin: 20px;
 }
 
 .blog-button-right {
@@ -26,5 +27,29 @@
 }
 
 .blog-right {
+  float: right;
+}
+
+.comment-wrapper{
+  margin-top: 50px;
+}
+
+.comment-del-btn {
+  border: none;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 5px;
+  float: right;
+}
+
+.comment-del-btn {
+  border: none;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 5px;
   float: right;
 }

@@ -49,7 +49,8 @@ export class CommentOnBlogPostComponent implements OnInit {
       this.borderColor = '';
       this.postComments.push({
         comment: this.model.comment,
-        username: this.currentUser.username
+        username: this.currentUser.username,
+        user_id: this.currentUser.id
       });
       this.blogService.commentOnPost(this.postId, this.model )
       .subscribe((response) => {
@@ -85,5 +86,37 @@ export class CommentOnBlogPostComponent implements OnInit {
       this.commentOpen = false;
       this.commentMessage = 'Show comments';
     }
+  }
+
+  /**
+   * Delete a comment
+   *
+   * @param {array} commentId comment id
+   *
+   * @return {void}
+   */
+  deleteComment(commentId) {
+    this.deleteCurrentComment(commentId);
+    this.blogService.deletePostComment(commentId)
+    .subscribe((response) => {
+      this.success = response.success;
+    });
+  }
+
+  /**
+   * Delete selected comment created by current user dynamically
+   *
+   * @param {array} commentId comment id
+   *
+   * @return {void}
+   */
+  deleteCurrentComment(commentId) {
+    let currentComment;
+    this.postComments.forEach((member, index) => {
+      if (member.id === commentId) {
+          currentComment = index;
+      }
+    });
+    this.postComments.splice(currentComment, 1);
   }
 }

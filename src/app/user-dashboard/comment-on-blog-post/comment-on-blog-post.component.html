@@ -16,13 +16,17 @@
         <b>{{commentMessage}} <span class="tag-white">{{postComments.length}}</span></b>
     </button>
   </p>
-<div [style.display]="commentDisplay">
+<div [style.display]="commentDisplay" class="comment-wrapper">
     <div
       class="post-comments"
       *ngFor="let comments of postComments let i=index"
     >
-        <h4>{{comments.username}}</h4>
-        <p>{{comments.comment}}</p>
+      <button
+        *ngIf="currentUser.id === comments.user_id"
+        class="comment-del-btn"
+        (click)="deleteComment(comments.id)"><i class="fa fa-trash"></i></button>
+      <h4>{{comments.username}}</h4>
+      <p>{{comments.comment}}</p>
     </div>
 </div>
 

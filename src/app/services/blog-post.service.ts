@@ -140,4 +140,17 @@ export class BlogPostService {
     .get(`${this.apiBaseUrl}/v1/post/comments/${postId}`, { headers: this.headers })
     .map((response: Response) => response);
   }
+
+  /**
+   * Delete a comment in a post
+   *
+   * @param {number} commentId the number representing the comment id
+   *
+   * @return {observable} Observable response
+   */
+  deletePostComment(commentId): Observable<any> {
+    return this.http
+    .delete(`${this.apiBaseUrl}/v1/post/comments/${commentId}`, { headers: this.headers })
+    .map((response: Response) => response);
+  }
 }
