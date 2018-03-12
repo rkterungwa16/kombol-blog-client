@@ -22,12 +22,16 @@ Based on project requirement, kombol-blog-platform has the following features:
 - Users can successfully create a new account by providing some signup details
 - Registered Users can successfully login to the application
 - A jsonwebtoken is generated on successful signup/login
+- A user can follow another user
+- A user can unfollow another user
 
 ### Blog Post
 - A user can create a blog post
 - A user can delete a blog post
 - A user can edit a blog post
 - A user can comment on a blog post
+- A user can edit a comment
+- A user can delete a comment
 - A user can like and unlike a blog post
 
 
@@ -72,8 +76,7 @@ Contributions are welcome and appreciated. To contribute
 
 ## Limitations
   kombol-blog's current limitations (aka features in development) include:
-  - User cannot delete comments
-  - User cannot edit comments
+  - User cannot create collections
 
 ## License
   This project is available for use and modification under the MIT License. See the LICENSE file for more details.
