@@ -12,17 +12,90 @@ import { UserService } from '../services/user.service';
     styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent {
-    model: any = {};
+export class RegisterComponent implements OnInit {
+    model = {
+      username: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
+    };
+    registerBorderColor: string;
+    registrationForm: FormGroup;
+    errorMessage: string;
+    loading: string;
 
     constructor(
-        private router: Router,
-        private userService: UserService) { }
+      private router: Router,
+      private userService: UserService) { }
 
-    register() {
-        this.userService.registerUser(this.model)
-          .subscribe((response) => {
-            this.router.navigate(['/login']);
-          });
+    ngOnInit(): void {
+      this.registrationForm = new FormGroup({
+        'username': new FormControl(
+          this.model.username, [
+            Validators.required,
+            Validators.minLength(4)
+          ]
+        ),
+        'email': new FormControl(
+          this.model.email, [
+            Validators.required,
+            Validators.email
+          ]
+        ),
+        'password': new FormControl(
+          this.model.password, [
+            Validators.required,
+            Validators.minLength(6)
+          ]
+        ),
+        'password_confirmation': new FormControl(
+          this.model.password_confirmation, [
+            Validators.required,
+            Validators.minLength(6),
+          ]
+        )
+      });
     }
+    get email() { return this.registrationForm.get('email'); }
+
+    get username() { return this.registrationForm.get('username'); }
+
+    get password() { return this.registrationForm.get('password'); }
+
+    get password_confirmation() { return this.registrationForm.get('password_confirmation'); }
+
+    /**
+     * Register a user
+     * Navigate to login page on successful registration
+     *
+     * @return {void}
+     */
+    register() {
+      if (this.registrationForm.value.username === '' ||
+        this.registrationForm.value.email === '' ||
+        this.registrationForm.value.password === '' ||
+        this.registrationForm.value.password_confirmation === ''
+    ) {
+      this.registerBorderColor = 'red';
+    } else {
+      this.registerBorderColor = '';
+      this.loading = 'block';
+      this.userService.registerUser(this.registrationForm.value)
+        .subscribe((response) => {
+          this.loading = 'none';
+          if (response.success === false && JSON.parse(response.error).username) {
+            this.errorMessage = JSON.parse(response.error).username[0];
+          } else if (response.success === false && JSON.parse(response.error).email) {
+            this.errorMessage = response.error.username[0];
+          } else {
+            this.router.navigate(['/login']);
+          }
+        },
+        (errorResponse) => {
+          this.loading = 'none';
+          this.errorMessage = errorResponse.error.error;
+        }
+      );
+    }
+  }
 }

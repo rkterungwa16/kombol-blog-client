@@ -4,7 +4,7 @@ input[type=text], input[type=password] {
   padding: 15px;
   margin: 5px 0 22px 0;
   display: block;
-  border: none;
+  border: solid 1px gray;
   background: #f1f1f1;
 }
 
@@ -31,15 +31,15 @@ button:hover {
   opacity:1;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
+button[disabled]{
+  border: 1px solid #918081;
+  background-color: #E8DCDD;
+  color: #6A7373;
 }
 
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+.loginbtn {
   width: 200px;
+  display: flex;
 }
 
 /* Add padding to container elements */
@@ -50,14 +50,14 @@ button:hover {
 
 /* The Modal (background) */
 .modal {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: block; 
+  position: fixed; 
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
   background-color: #474e5d;
   padding-top: 50px;
 }
@@ -65,9 +65,9 @@ button:hover {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% auto 15% auto; 
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 40%; 
 }
 
 hr {
@@ -83,4 +83,45 @@ hr {
 
 .form-group {
   margin-bottom: 10px;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+  margin-left: 40px;
+  width: 430px;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #F1A1AE;
+  opacity: .4;
+  border: solid 1px red;
+  color: white;
+}
+
+.loader {
+  display: none;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loginText {
+  margin-left: 60px;
 }

@@ -1,0 +1,60 @@
+<form class="post-comment" (ngSubmit)="commentOnPost()">
+    <div class="container">
+      <input
+        [style.borderColor]="borderColor"
+        class='comment-input'
+        type="text"
+        placeholder="Post a comment..."
+        name="comment"
+        [(ngModel)]="model.comment"
+      >
+      <button class="comment-btn" type="submit">Post</button>
+    </div>
+</form>
+<p class="blog-right" appRedBorder="'red'">
+    <button class="blog-button-right" (click)="showOrHideComments()">
+        <b>{{commentMessage}} <span class="tag-white">{{postComments.length}}</span></b>
+    </button>
+  </p>
+<div [style.display]="commentDisplay" class="comment-wrapper">
+    <div
+      class="post-comments"
+      *ngFor="let comments of postComments let i=index"
+    >
+      <button
+        *ngIf="currentUser.id === comments.user_id"
+        class="comment-edit-btn"
+        (click)="openEditBox({
+          commentId: comments.id,
+          comment: comments.comment
+        })"><i class="fa fa-edit"></i>
+      </button>
+      <button
+        *ngIf="currentUser.id === comments.user_id"
+        class="comment-del-btn"
+        (click)="deleteComment(comments.id)"><i class="fa fa-trash"></i>
+      </button>
+      <h4>{{comments.username}}</h4>
+      <p
+        *ngIf="commentId!==comments.id"
+      >{{comments.comment}}</p>
+      <form
+        class="edit-comment"
+        (ngSubmit)="editComment()"
+        *ngIf="openEdit===true && commentId===comments.id"
+      >
+          <div class="container">
+            <input
+              [style.borderColor]="borderColor"
+              class='edit-input'
+              type="text"
+              placeholder="Edit comment..."
+              name="comment"
+              [(ngModel)]="editModel.comment"
+            >
+            <button class="comment-btn" type="submit">Edit</button>
+          </div>
+      </form>
+    </div>
+</div>
+

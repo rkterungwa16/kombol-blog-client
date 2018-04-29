@@ -1,3 +1,8 @@
+body {
+  height: 100%;
+  overflow: auto;
+}
+
 .quote {
   font: 400 72px "Arizonia", Helvetica, sans-serif;
   color: #858A7A;

@@ -1,0 +1,64 @@
+.comment-input {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.edit-input {
+  width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.comment-btn {
+  margin-top: 20px;
+  height: 40px;
+  width: 50px;
+}
+
+.post-comments {
+  border: solid 1px #948383;
+  padding: 10px;
+  margin: 20px;
+}
+
+.blog-button-right {
+  height: 40px;
+  width: 200px;
+  background-color: black;
+  color: white;
+}
+
+.blog-right {
+  float: right;
+}
+
+.comment-wrapper{
+  margin-top: 50px;
+}
+
+.comment-del-btn {
+  border: none;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 5px;
+  float: right;
+}
+
+.comment-edit-btn {
+  border: none;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 5px;
+  float: right;
+}

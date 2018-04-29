@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
-import 'rxjs/add/operator/map'
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
@@ -10,13 +13,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Logs in a registered user
+   *
+   * @param {object} userInfo contains all the users information
+   *
+   * @return {observable} Observable containing the user's info
+   */
   login(userInfo) {
       return this.http.post(`${this.apiBaseUrl}/v1/login`, userInfo)
       .map((response: {data}) => response)
+      .catch((error) => Observable.throw(error));
   }
-
-  // logout() {
-  //     // remove user from local storage to log user out
-  //     localStorage.removeItem('currentUser');
-  // }
 }

@@ -1,0 +1,83 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<app-nav-bar></app-nav-bar>
+  <div class='home-page'>
+      <div class="your-blog-heading">
+      <h1 class="post-info bold">Other blogs</h1>
+      </div>
+      <div *ngIf="loading === true" class="page-loader"></div>
+      <div *ngIf="blogPosts.length===0 && loading===false">You do not have any blog posts</div>
+      <div *ngIf="blogPosts" >
+          <div *ngFor="let post of blogPosts let i=index"  class="your-blogs">
+              <div class="card">
+                <a class="post-title" [routerLink]="['/post', post.id]">
+                  <p class="quote">{{post.title}}</p>
+                </a>
+                <div class="follow-wrapper">
+                  <a
+                    class="post-creator-btn"
+                    (click)="openModal({
+                      postId: post.id,
+                      postAuthor: post.author,
+                      postIndex: i,
+                      postAuthorId: post.user_id
+                    })"
+                    id="post-follow-btn-{{post.id}}"
+                  >
+                    <span
+                      class="post-creator"
+                      id="post-follow-{{post.id}}"
+                    >Created By: {{post.author}}</span>
+                  </a>
+                </div>
+
+                <hr>
+                <div class="container">
+                  <div class="blog-group-btn">
+                      <app-like-blog-post
+                        [postId]="post.id"
+                        [authorId]="post.user_id"
+                      ></app-like-blog-post>
+                  </div>
+                  <hr>
+                  <div class="post-comment">
+                      <app-comment-on-blog-post
+                        [postIndex] = "i"
+                        [postId] = "post.id"
+                        [currentUser] = "currentUser"
+                      ></app-comment-on-blog-post>
+                    </div>
+                </div>
+              </div>
+            </div>
+          <div
+            [style.display]="modalDisplay"
+            class="follow-modal"
+            (click)="openModal()"
+          >
+            <div
+              class="follow-modal-content animate"
+            >
+              <div
+                class="follow-card"
+              >
+                <img class="follow-img"
+                  src="https://res.cloudinary.com/doy0uyv63/image/upload/v1513431912/Screen_Shot_2017-12-16_at_2.38.38_PM_bxpyhd.png"
+                  alt="Avatar"
+                >
+                <div class="follow-container">
+                  <h4><b>{{postAuthor}}</b></h4>
+                  <div *ngIf="postAuthor !== currentUser.id">
+                      <app-follow-user
+                      [userId] = "postAuthorId"
+                      [postIndex] = "postIndex"
+                      [currentUser] = "currentUser"
+                    >
+                    </app-follow-user>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+

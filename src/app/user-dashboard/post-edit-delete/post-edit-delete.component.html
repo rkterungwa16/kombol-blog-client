@@ -1,0 +1,46 @@
+<div id="list-dropdown">
+    <div id="myDropdown" class="dropdown-content">
+        <button class="btn" (click)="openDeleteModal()"><i class="fa fa-trash"></i></button>
+        <button class="btn" (click)="openModal()"><i class="fa fa-edit"></i></button>
+    </div>
+</div>
+
+<div [style.display]="deleteModalDisplay" class="modal">
+  <div class="delete-modal-content animate">
+      <div class="imgcontainer">
+          <span (click)="openDeleteModal()" class="delete-close" title="Close Modal">&times;</span>
+      </div>
+      <button (click)="deletePost()" class="delete-btn" type="submit">Delete</button>
+  </div>
+</div>
+
+<div [style.display]="modalDisplay" class="modal">
+    <form class="modal-content animate" (ngSubmit)="editPost()">
+      <div class="imgcontainer">
+        <span (click)="openModal()" class="close" title="Close Modal">&times;</span>
+      </div>
+
+      <div class="container">
+        <label for="title"><b>Title</b></label>
+        <input
+          [style.borderColor] = "titleBorderColor"
+          class='edit-input'
+          type="text"
+          placeholder="Enter new title"
+          name="title"
+          [(ngModel)]="model.title"
+        >
+
+        <label for="content"><b>Content</b></label>
+        <textarea
+          [style.borderColor] = "contentBorderColor"
+          class="edit-input"
+          name="content"
+          placeholder="Enter new content..."
+          [(ngModel)]="model.content"
+        ></textarea>
+
+        <button class="edit-btn" type="submit">Edit</button>
+      </div>
+    </form>
+</div>

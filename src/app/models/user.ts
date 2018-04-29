@@ -1,12 +1,11 @@
-export class User {
-
-  constructor(
-    public id: number,
-    public username: string,
-    public password: string,
-    public firstName: string,
-    public lastName: string
-  ) {  }
+/**
+ * @interface User
+ * Blueprint for the skills object
+ */
+export interface User {
+  username: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
 }
-
 

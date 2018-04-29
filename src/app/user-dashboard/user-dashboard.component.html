@@ -1,52 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="topnav">
-  <div class="dropdown">
-    <a href="#image" class="profile-link dropbtn">
-      <img
-        src="https://res.cloudinary.com/doy0uyv63/image/upload/v1513431912/Screen_Shot_2017-12-16_at_2.38.38_PM_bxpyhd.png"
-        alt=""
-        class="profile-img"
-      >
-    </a>
-    <div class="dropdown-content">
-      <a [routerLink]="['/publish']">create post</a>
-      <a href="#">settings</a>
-      <a href="#">logout</a>
-    </div>
-  </div>
-</div>
-
+<app-nav-bar></app-nav-bar>
 <div class='home-page'>
-    <div>
+    <div class="your-blog-heading">
     <h1 class="post-info bold">Your blogs</h1>
     </div>
-    <hr>
-    <div *ngIf="blogPosts.length===0">You do not have any blog posts</div>
+    <div *ngIf="blogPosts.length===0 && loading===false">You do not have any blog posts</div>
+    <div *ngIf="loading===true" class="page-loader"></div>
     <div *ngIf="blogPosts" >
-        <div *ngFor="let post of blogPosts"  class="your-blogs">
+        <div *ngFor="let post of blogPosts let i=index"  class="your-blogs">
             <div class="card">
+              <app-post-edit-delete
+                [postIndex] = "i"
+                [postId] = "post.id"
+                [authorId] = "post.user_id"
+                [blogPosts] = "blogPosts"
+                (updatedPosts) = "renderUpdatedPosts($event)"
+              >
+
+              </app-post-edit-delete>
               <p class="quote">{{post.title}}</p>
               <hr>
               <div class="container">
                 <h1 class="post-info">{{post.content}}</h1>
-                <p class="post-info">Ok now what</p>
-                <p class="post-info"><a href="#">Read more...</a></p>
+                <hr>
                 <div class="blog-group-btn">
-
                     <app-like-blog-post
                       [postId]="post.id"
                       [authorId]="post.user_id"
                     ></app-like-blog-post>
-                    <p class="blog-right">
-                      <button class="blog-button-right">
-                          <b>Comments <span class="tag-white">0</span></b>
-                      </button>
-                    </p>
                 </div>
                 <hr>
                 <div class="post-comment">
-                    <h4>George <span class="comment-time">May 3, 2015, 6:32 PM</span></h4>
-                    <p>Great blog post! Following</p>
+                    <app-comment-on-blog-post
+                      [postIndex] = "i"
+                      [postId] = "post.id"
+                      [currentUser] = "currentUser"
+                    ></app-comment-on-blog-post>
                   </div>
               </div>
             </div>
